@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" href="@{'/public/css/reset.css'}" />
+		<link rel="stylesheet" href="@{'/public/css/text.css'}" />
+		<link rel="stylesheet" href="@{'/public/css/960.css'}" />
+        
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/right.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/woimg.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+    <div class="container_12">
+	    <h1>WOIMG</h1>
+    </div>
+    #{doLayout /}
+    </body>
+</html>

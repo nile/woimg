@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<div class="container_12">
+
+	<div class="grid_4">
+		<div class="caption">上传</div>
+		上传本地图片
+		#{form @Application.upload(), id:'file-load-form', enctype:'multipart/form-data'}
+			<input type="hidden" name="type" value="file">
+			<input type="file" name="file" style="width:226px;">
+			<input type="submit" value="提交" >
+		#{/form}
+		收藏网络图片
+		#{form @Application.upload(), id:'url-load-form'}
+			<input type="hidden" name="type" value="url">
+			<input type="text" name="url" style="width:220px;">
+			<input type="submit" value="提交">
+		#{/form}
+	</div>
+	<div class="grid_4">
+		<div class="caption">热点</div>
+		<div id="popular"></div>
+	</div>
+	<div class="grid_4">
+		<div class="caption">最新</div>
+		<div id="latest"></div>
+	</div>
+
+</div>
+<br/>
+<div class="container_12">
+	<div class="grid_6">
+		<div class="caption">API</div>
+		<div id="latest"></div>
+	</div>
+	<div class="grid_6">
+		<div class="caption">工具</div>
+		<div id="latest"></div>
+	</div>
+</div>
+<script>
+	$('file-load-form').remotize();
+	$('url-load-form').remotize();
+	$(document).onReady(function() {
+		var wimg = new WoImg()
+		wimg.popular();
+		wimg.latest();
+	});
+</script>

@@ -1,0 +1,32 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{set 'moreScripts'}
+	<script src="@{'/public/javascripts/right/rater.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+	<script src="@{'/public/javascripts/right/autocompleter.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+
+<div class="container_12">
+
+	<div class="grid_8">
+		<div><img src="${img.largeLink()}"></div>
+		<div class="caption">标题:${img.caption}</div>
+		<div>评分:
+			<div class="rui-rater" data-rater="{url:'@{Application.rate(img.hash)}', disableOnVote: true ,Xhr: { method: 'post', onSuccess:function(request) { var text = request.responseText; $('votes-id').html(text);} } }">
+			  <div>&#9733;</div>
+			  <div>&#9733;</div>
+			  <div>&#9733;</div>
+			  <div>&#9733;</div>
+			  <div>&#9733;</div>
+			</div>
+		<span id="votes-id">${img.votes}</span></div>
+		<div>标签:#{list img.tags, as:'tag'}${tag.name}#{/list}
+		<input type="text" data-autocompleter="{url:'@{Application.tags()}',param:'p',onDone:function(v){alert(v);}}}" /></div>
+		<div class="clear"></div>
+		<div>评论</div>
+		
+	</div>
+	<div class="grid_4">
+		
+	</div>
+	
+</div>
