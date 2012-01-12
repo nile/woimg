@@ -1,0 +1,6 @@
+.hg
+.settings
+.hgignore
+.logs
+logs
+tmp
