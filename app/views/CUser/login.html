@@ -1,0 +1,11 @@
+#{extends 'main.html'/}
+
+#{form @CUser.auth()}
+<fieldset>
+<p><label>用户名</label><br/>
+<input class="title" type="text" name="obj.login"/></p>
+<p><label>密码</label><br/>
+<input class="title" type="password" name="obj.password"/></p>
+<input class="title" type="submit" value="登录"/>
+</fieldset>
+#{/form}

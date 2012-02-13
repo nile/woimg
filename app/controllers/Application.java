@@ -10,16 +10,23 @@ import models.Tag;
 
 import org.apache.commons.io.FileUtils;
 
+import play.mvc.Before;
 import play.mvc.Controller;
+import sun.net.www.protocol.http.AuthCache;
 import utils.HttpUtil;
 import utils.ImgUtil;
 
 import com.google.gson.GsonBuilder;
 
 public class Application extends Controller {
+	
 	static String UPLOAD_DIR="public/upload";
 	public static void index() {
 		render();
+	}
+	public static void page() {
+		List<Img> imgs = Img.latest();
+		render(imgs);
 	}
 	public static void view(String hash) {
 		Img img = Img.getByHash(hash);
@@ -64,7 +71,7 @@ public class Application extends Controller {
 					File orignalFile = new File(UPLOAD_DIR,img.orignalFile());
 					FileUtils.moveFile(file, orignalFile);
 					BufferedImage orignalImg = ImgUtil.read(orignalFile);
-					ImgUtil.write(ImgUtil.t100(orignalImg),img.type,UPLOAD_DIR + File.separatorChar + img.smallFile());
+					ImgUtil.write(ImgUtil.t170(orignalImg),img.type,UPLOAD_DIR + File.separatorChar + img.smallFile());
 					ImgUtil.write(ImgUtil.t600(orignalImg),img.type,UPLOAD_DIR + File.separatorChar+ img.largeFile());
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -80,7 +87,7 @@ public class Application extends Controller {
 					File orignalFile = new File(UPLOAD_DIR, img.orignalFile());
 					FileUtils.moveFile(tmpfile, orignalFile);
 					BufferedImage orignalImg = ImgUtil.read(orignalFile);
-					ImgUtil.write(ImgUtil.t100(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.smallFile());
+					ImgUtil.write(ImgUtil.t170(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.smallFile());
 					ImgUtil.write(ImgUtil.t600(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.largeFile());
 				} catch (IOException e) {
 					e.printStackTrace();

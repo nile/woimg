@@ -1,0 +1,28 @@
+#{extends 'main.html'/}
+<div class="left55">
+#{form @CUser.register()}
+	<fieldset>
+	<legend>新用户注册</legend>
+	<p><label>用户名</label><br/>
+	<input class="title" type="text" name="obj.login"/></p>
+	<p><label>密码</label><br/>
+	<input class="title" type="password" name="obj.password"/></p>
+	<p><label>邮件</label>
+	<br/>
+	<input class="title" type="text" name="obj.email"/></p>
+	<input class="title" type="submit" value="现在加入"/>
+	</fieldset>
+#{/form}
+</div>
+<div class="right55">
+#{form @CUser.auth()}
+	<fieldset>
+	<legend>现有用户登录</legend>
+	<p><label>用户名</label><br/>
+	<input class="title" type="text" name="obj.login"/></p>
+	<p><label>密码</label><br/>
+	<input class="title" type="password" name="obj.password"/></p>
+	<input class="title" type="submit" value="登录"/>
+	</fieldset>
+#{/form}
+</div>

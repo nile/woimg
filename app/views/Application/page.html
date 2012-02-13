@@ -1,0 +1,7 @@
+<div id="loading-container">
+#{list items: imgs, as: 'img'}
+<div class="img-frame frame-border" data-height="${img.height}" data-hash="${img.hash}"  data-url="${img.smallLink()}" data-width="${img.width}">
+	#{a @Application.view(img.hash)}<img id="${img.hash}" src="/public/images/place-holder.png" style="height:${Math.round((170.0/img.width)*img.height)}px"/>#{/a}
+</div>	
+#{/list}
+</div>

@@ -24,6 +24,14 @@ create table tag (
   constraint pk_tag primary key (id))
 ;
 
+create table user (
+  id                        bigint auto_increment not null,
+  login                     varchar(255),
+  password                  varchar(255),
+  email                     varchar(255),
+  constraint pk_user primary key (id))
+;
+
 alter table tag add constraint fk_tag_img_1 foreign key (img_id) references img (id) on delete restrict on update restrict;
 create index ix_tag_img_1 on tag (img_id);
 
