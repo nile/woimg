@@ -1,18 +1,21 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-	<div class="left frame-border">
-		
+	<div class="grid_3 ">
+		<div class="frame-border">a</div>
 	</div>
 	
-	<div class="right frame-border">
-		<div><img src="${img.largeLink()}"></div>
-		<div class="caption">标题:${img.caption}</div>
+	<div class="grid_9">
 		
-		<div>标签:#{list img.tags, as:'tag'}${tag.name}#{/list}
-		<input type="text" data-autocompleter="{url:'@{Application.tags()}',param:'p',onDone:function(v){alert(v);}}}" /></div>
-		<div class="clear"></div>
-		<div>评论</div>
+		<div class="frame-border">
+			<div style="text-align:center;background-color:#eee;padding:10px 0;">
+			<img src="${img.largeLink()}">
+			</div>
+			<div class="caption">标题:${img.caption}</div>
+			
+			<div class="clear"></div>
+			<div>评论</div>
+		</div>
 		
 	</div>
 

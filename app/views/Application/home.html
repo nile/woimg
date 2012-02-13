@@ -1,0 +1,14 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<div class="clear"></div>
+	<div class="grid_3">
+		<p class="frame-border">${current_user.login}</p>
+	</div>
+	<div class="grid_9">
+		<hr/>
+		#{list boards , as: 'board'}
+			<div class="frame-border">${board.name}</div>
+		#{/list}
+	</div>
+
+<div class="clear"></div>

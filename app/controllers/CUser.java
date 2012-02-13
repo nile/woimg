@@ -15,7 +15,7 @@ public class CUser extends Controller{
 		render();
 	}
 	public static void auth(User obj) {
-		User user = User.findUnique("login = ?", obj.login);
+		User user = User.getByLogin(obj.login);
 		if(StringUtils.equals(user.password,Crypto.passwordHash(obj.password))) {
 			session.put(KEY_SESSION_USER_LOGON,user.login);
 			Application.index();

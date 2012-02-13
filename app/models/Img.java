@@ -42,7 +42,6 @@ public class Img extends Model{
 	
 	public String info;
 	@OneToMany(cascade=CascadeType.ALL)
-	public Set<Tag> tags = new HashSet<Tag>();
 	
 	public static Img createFromFile(File file, String caption, String desc, String infomation) {
 		Info info = ImgUtil.detectImageType(file);
@@ -58,7 +57,7 @@ public class Img extends Model{
 			img.deleteHash = HashUtil.deleteHash(img.hash);
 			img.createDate = new Date();
 			img.info = infomation;
-			img.dosave();
+			img.save();
 			return img;
 		}
 		return null;
@@ -68,6 +67,9 @@ public class Img extends Model{
 		return "/view/" + hash;
 	}
 
+	public String thumbLink() {
+		return "/public/upload/" + thumbFile();
+	}
 	public String smallLink() {
 		return "/public/upload/" + smallFile();
 	}
@@ -83,6 +85,9 @@ public class Img extends Model{
 	public String orignalFile() {
 		return hash + ext;
 	}
+	public String thumbFile() {
+		return hash + "s" + ext;
+	}
 	public String smallFile() {
 		return hash + "s" + ext;
 	}
@@ -90,16 +95,10 @@ public class Img extends Model{
 		return hash + "l" + ext;
 	}
 	
-	public static List<Img> popular(){
-		return ebean().createQuery(Img.class).orderBy("views desc").setMaxRows(9).findList();
-	}
 	public static List<Img> latest(){
 		return ebean().createQuery(Img.class).orderBy("createDate desc").setMaxRows(9).findList();
 	}
 	public static Img getByHash(String hash) {
 		return ebean().createQuery(Img.class).where("hash = ?").setParameter(1, hash).findUnique();
-	}
-	public void dosave() {
-		ebean().save(this);
 	}
 }

@@ -14,45 +14,94 @@
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/right.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/right/dialog.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/right/selectable.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/woimg.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
     <img src="/public/images/place-holder.png" id="img-holder">
-    <div class="container">
-	    <div>
-		    <h1>WOIMG</h1>
-		    <div class="tools"><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>
-		    <a href="@{CUser.joinin()}">JOIN IN</a></div>
+    <div class="container container_12">
+	    <h1 class="grid_8">WOIMG</h1>
+	    <div class="grid_4 right">
+		    <div><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
+		    #{if current_user != null}
+		    	<a href="@{Application.home(current_user.login)}">${current_user.login}</a>
+		    #{/if}
+		    #{else}
+		    	<a href="@{CUser.joinin()}">JOIN IN</a>
+		    #{/else}
+		    </div>
 	    </div>
-	    <hr/>
+	    <hr class="grid_12"/>
+	    <div class="clear"></div>
 	    #{doLayout /}
     </div>
     <script>
+    var add_dlg;
     function tool_add(){
-    	new Dialog()
-    	.title('Paster')
+    	add_dlg = new Dialog();
+    	add_dlg.title('Paster')
 		.html('Hi there!')
 		.update($('dlg-tool-add').clone())
 		.show();
     }
+    function add_from_website(){
+    	add_dlg.update($('dlg-add-from-website').clone());
+    }
+    function add_from_upload(){
+		add_dlg.update($('dlg-add-from-upload').clone())
+    }
+    function create_board(){
+    	var frm = $('dlg-add-create-board').clone();
+		add_dlg.update(frm);
+    }
     </script>
     <div id="loading-hiddent-div">
     </div>
+    
 	<div id="dlg-hidden-div" style="visibility:hidden;">
 		<div id="dlg-tool-add" class="span-4 frame-border">
-			<div class="caption">上传</div>
+			<div>
+			<a href="javascript:void(0)" onclick="javascript:add_from_website()">从网站收藏</a>
+			</div>
+			<div>
+			<a href="javascript:void(0)" onclick="javascript:add_from_upload()">从文件上传</a>
+			</div>
+			<div>
+			<a href="javascript:void(0)" onclick="javascript:create_board()">新建面板</a>
+			</div>
+		</div>
+		<div id="dlg-add-from-upload" class="span-4">
 			上传本地图片
 			#{form @Application.upload(), id:'file-load-form', enctype:'multipart/form-data'}
 				<input type="hidden" name="type" value="file">
 				<input type="file" name="file" style="width:226px;">
 				<input type="submit" value="提交" >
 			#{/form}
+		</div>
+		<div id="dlg-add-from-website" class="span-4">
 			收藏网络图片
 			#{form @Application.upload(), id:'url-load-form'}
 				<input type="hidden" name="type" value="url">
 				<input type="text" name="url" style="width:220px;">
 				<input type="submit" value="提交">
+			#{/form}
+		</div>
+		<div id="dlg-add-create-board" class="span-4 frame-border">
+			#{form @Application.createBoard(), id:'url-load-form'}
+				<fieldset>
+				<legend>新建面板</legend>
+				<p><label>名称</label><br/>
+				<input class="title" type="text" name="name"></p>
+				<p><label>分类</label><br/>
+				<select class="title" name="category" id="board-category" >
+					#{list categories, as:'cat'}
+					<option value="${cat.code}">${cat.name}</option>
+					#{/list}
+				</select>
+				</p>
+				<input class="title" type="submit" value="提交">
+				</fieldset>
 			#{/form}
 		</div>
 	</div>    

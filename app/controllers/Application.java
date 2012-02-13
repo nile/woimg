@@ -5,22 +5,26 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.swing.border.Border;
+
+import models.Board;
+import models.Category;
 import models.Img;
-import models.Tag;
+import models.User;
 
 import org.apache.commons.io.FileUtils;
 
-import play.mvc.Before;
 import play.mvc.Controller;
-import sun.net.www.protocol.http.AuthCache;
+import play.mvc.With;
+import utils.HashUtil;
 import utils.HttpUtil;
 import utils.ImgUtil;
 
 import com.google.gson.GsonBuilder;
-
+@With(LoginFilter.class)
 public class Application extends Controller {
 	
-	static String UPLOAD_DIR="public/upload";
+	public static String UPLOAD_DIR="public/upload";
 	public static void index() {
 		render();
 	}
@@ -31,36 +35,22 @@ public class Application extends Controller {
 	public static void view(String hash) {
 		Img img = Img.getByHash(hash);
 		img.views = img.views+1;
-		img.dosave();
+		img.save();
 		render(img);
 	}
-	public static void latest() {
-		List<Img> populars = Img.latest();
-		GsonBuilder gb = new GsonBuilder();
-		gb.registerTypeAdapter(Img.class, new ImgSerializer());
-		renderJSON(gb.create().toJson(populars));
+	public static void home(String login) {
+		List<Board> boards = Board.findByUser(LoginFilter.getLoginUser().id);
+		render(boards);
 	}
-	public static void popular() {
-		List<Img> populars = Img.popular();
-		GsonBuilder gb = new GsonBuilder();
-		gb.registerTypeAdapter(Img.class, new ImgSerializer());
-		renderJSON(gb.create().toJson(populars));
-	}
-	public static void rate(String hash, int rate) {
-		Img img = Img.getByHash(hash);
-		img.votetotal += rate;
-		img.votecount ++;
-		img.votes = (img.votetotal*10)/img.votecount/10.0;
-		img.dosave();
-		renderText(img.votes);
-	}
-	public static void tag(String hash, String tag) {
-		Img img = Img.getByHash(hash);
-		img.tags.add(Tag.getOrCreate(tag));
-		img.dosave();
-	}
-	public static void tags(String p) {
-		renderJSON(Tag.tags(p));
+	public static void createBoard(String name, String category) {
+		User user = LoginFilter.getLoginUser();
+		Board board = new Board();
+		board.user = user;
+		board.category = Category.getByCode(category);
+		board.name = name;
+		board.hash = HashUtil.hash();
+		board.save();
+		home(user.login);
 	}
 	public static void upload(String type, String url, File file, String caption,
 			String desc) {
@@ -71,6 +61,7 @@ public class Application extends Controller {
 					File orignalFile = new File(UPLOAD_DIR,img.orignalFile());
 					FileUtils.moveFile(file, orignalFile);
 					BufferedImage orignalImg = ImgUtil.read(orignalFile);
+					ImgUtil.write(ImgUtil.t100(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.thumbLink());
 					ImgUtil.write(ImgUtil.t170(orignalImg),img.type,UPLOAD_DIR + File.separatorChar + img.smallFile());
 					ImgUtil.write(ImgUtil.t600(orignalImg),img.type,UPLOAD_DIR + File.separatorChar+ img.largeFile());
 				} catch (IOException e) {
@@ -87,6 +78,7 @@ public class Application extends Controller {
 					File orignalFile = new File(UPLOAD_DIR, img.orignalFile());
 					FileUtils.moveFile(tmpfile, orignalFile);
 					BufferedImage orignalImg = ImgUtil.read(orignalFile);
+					ImgUtil.write(ImgUtil.t100(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.thumbLink());
 					ImgUtil.write(ImgUtil.t170(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.smallFile());
 					ImgUtil.write(ImgUtil.t600(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.largeFile());
 				} catch (IOException e) {

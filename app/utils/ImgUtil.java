@@ -58,7 +58,7 @@ public class ImgUtil {
 						true));
 		return thumpnailRescaleOp.filter(bi, null);
 	}
-/*
+
 	public static BufferedImage t100(BufferedImage bi) {
 		int size = Math.min(bi.getHeight()-2, bi.getWidth()-2);
 		CropFilter cropFilter = new CropFilter(Math.max(1,
@@ -69,7 +69,7 @@ public class ImgUtil {
 				DimensionConstrain.createAbsolutionDimension(100, 100));
 		return thumpnailRescaleOp.filter(croped, null);
 	}
-	*/
+	
 	public static BufferedImage t170(BufferedImage bi) {
 		ResampleOp  thumpnailRescaleOp = new ResampleOp (
 				DimensionConstrain.createMaxDimension(170, Integer.MAX_VALUE));

@@ -2,4 +2,4 @@
 
 require:
     - play
-    - play -> ebean 1.0.5
+    - play -> ebean 1.0.*
