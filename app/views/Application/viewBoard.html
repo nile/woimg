@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<div class="grid_12">
+	<div class="frame-border">
+	${board.name}
+	</div>
+</div>
+<br/>
+<div class="clear"></div>
+<div id="container">
+</div>
+<script>
+	$(document).onReady(function() {
+		var wimg = new WoImg()
+		wimg.boardpage('${board.hash}');
+	});
+</script>
