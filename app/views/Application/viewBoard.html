@@ -2,11 +2,11 @@
 #{set title:'Home' /}
 <div class="grid_12">
 	<div class="frame-border">
-	${board.name}
+		<h3>#{a @Application.viewBoard(board.hash)}${board.name}#{/a}</h3>
 	</div>
 </div>
-<br/>
 <div class="clear"></div>
+<br/>
 <div id="container">
 </div>
 <script>

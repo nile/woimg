@@ -37,7 +37,7 @@ var WoImg = new Class({
 	},
 	boardpage: function(board){
 		Xhr.load('/boardpage', {
-				params: {'board': board},
+				params: {'hash': board},
 				onSuccess: function(req){
 					var text = req.responseText;
 					var temp = new Element('div');

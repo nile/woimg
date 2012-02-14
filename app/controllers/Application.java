@@ -8,6 +8,7 @@ import java.util.List;
 
 import models.Board;
 import models.Category;
+import models.Comment;
 import models.Img;
 import models.Paster;
 import models.User;
@@ -32,8 +33,12 @@ public class Application extends Controller {
 	}
 	public static void view(String hash) {
 		Paster paster = Paster.getByHash(hash);
-		List<Paster> pastersInBorad = Paster.findByBoard(paster.board.hash);
+		List<Paster> pastersInBorad = paster.board.latest();
 		render(paster, pastersInBorad);
+	}
+	public static void edit(String hash) {
+		Paster paster = Paster.getByHash(hash);
+		render(paster);
 	}
 	public static void delete(String hash) {
 		Paster paster = Paster.getByHash(hash);
@@ -41,15 +46,18 @@ public class Application extends Controller {
 		viewBoard(paster.board.hash);
 	}
 	public static void home(String login) {
-		List<Board> boards = Board.findByUser(LoginFilter.getLoginUser().id);
-		render(boards);
+		User user = User.getByLogin(login);
+		List<Board> boards = user.myBoards();
+		List<Paster> latestPasters = user.latestPasters();
+		render(boards, latestPasters);
 	}
 	public static void viewBoard(String hash) {
 		Board board = Board.getByHash(hash);
 		render(board);
 	}
-	public static void boardPage(String board) {
-		List<Paster> pasters = Paster.findByBoard(board);
+	public static void boardPage(String hash) {
+		Board board = Board.getByHash(hash);
+		List<Paster> pasters = board.pasters();
 		render("Application/page.html",pasters);
 	}
 	public static void createBoard(String name, String category) {
@@ -61,6 +69,20 @@ public class Application extends Controller {
 		board.hash = HashUtil.hash();
 		board.save();
 		home(user.login);
+	}
+	public static void comments(String hash) {
+		Paster paster = Paster.getByHash(hash);
+		List<Comment> comments = paster.comments();
+		render(comments);
+	}
+	public static void comment(String hash, String comment) {
+		Paster paster = Paster.getByHash(hash);
+		User user = LoginFilter.getLoginUser();
+		paster.comment(user, comment);
+	}
+	public static void prerepaste(String hash) {
+		Paster paster = Paster.getByHash(hash);
+		render(paster);
 	}
 	public static void repaste(String paster, String board, String desc) {
 		Paster old = Paster.getByHash(paster);

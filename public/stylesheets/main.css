@@ -397,7 +397,20 @@ body {
 #img-holder{
 	visibility: hidden;
 }
-
+.left{
+	text-align: left;
+}
 .right{
 	text-align: right;
+}
+.button{
+	border: 1px solid #a4a4a4;
+	padding: 5px 10px;
+	background: -moz-linear-gradient(center top , #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED) repeat scroll 0 0 transparent;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 1em;
+}
+a.button{
+	text-decoration: none;
 }

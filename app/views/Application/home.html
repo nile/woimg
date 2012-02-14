@@ -2,12 +2,18 @@
 #{set title:'WOIMG' /}
 <div class="clear"></div>
 	<div class="grid_3">
-		<p class="frame-border">${current_user.login}</p>
+		<div class="frame-border">
+		  <h3>#{a @Application.home(current_user.login)}${current_user.login}#{/a}</h3>
+		  #{pastersgrid latestPasters/}
+		</div>
 	</div>
 	<div class="grid_9">
 		<hr/>
 		#{list boards , as: 'board'}
-			<div class="frame-border">${board.name}</div>
+			<div class="grid_3 frame-border">
+			  <h3>#{a @Application.viewBoard(board.hash)}${board.name}#{/a}</h3>
+	  		  #{pastersgrid board.latest()/}
+			</div>
 		#{/list}
 	</div>
 

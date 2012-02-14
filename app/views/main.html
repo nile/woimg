@@ -17,25 +17,28 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-    <img src="/public/images/place-holder.png" id="img-holder">
-    <div class="container container_12">
-	    <h1 class="grid_8">#{a @Application.index()}WOIMG#{/a}</h1>
-	    <div class="grid_4 right">
-		    <div><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
-		    #{if current_user != null}
-		    	<a href="@{Application.home(current_user.login)}">${current_user.login}</a>
-		    #{/if}
-		    #{else}
-		    	<a href="@{CUser.joinin()}">JOIN IN</a>
-		    #{/else}
+    <div id="loading-hiddent-div" style="height:0px;">
+	    <img src="/public/images/place-holder.png" id="img-holder">
+    </div>
+    <div class="container_12">
+    	<div>
+		    <h1 class="grid_8">#{a @Application.index()}WOIMG#{/a}</h1>
+		    <div class="grid_4 right">
+			    <div><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
+			    #{if current_user != null}
+			    	<a href="@{Application.home(current_user.login)}">${current_user.login}</a>
+			    #{/if}
+			    #{else}
+			    	<a href="@{CUser.joinin()}">JOIN IN</a>
+			    #{/else}
+			    </div>
 		    </div>
-	    </div>
-	    <hr class="grid_12"/>
+		    <hr class="grid_12"/>
+	  	</div>
 	    <div class="clear"></div>
 	    #{doLayout /}
     </div>
     <script>
-    var add_dlg;
     function tool_add(){
         new Lightbox({showButtons:false, showTitle: false}).show($('dlg-tool-add').clone());
     }
@@ -48,12 +51,11 @@
     function create_board(){
         new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-create-board').clone());
     }
-    function repaste(){
-    
+    function repaste(hash){
+    	new Lightbox({showButtons:false, showTitle: false}).load('@{Application.prerepaste()}',{params:{'hash':hash}});
     }
     </script>
-    <div id="loading-hiddent-div">
-    </div>
+    
     <!-- 隐藏的对话框的代码 -->
 	<div id="dlg-hidden-div" style="visibility:hidden;">
 		<div id="dlg-tool-add" class="frame-border">
@@ -89,10 +91,11 @@
 			#{/form}
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-website" class="">
-			收藏网络图片
+		<div id="dlg-add-from-website" >
+			<div style="padding:10px;">
 			#{form @Application.paste(), id:'url-load-form'}
 				<fieldset>
+				<legend>收藏网络图片</legend>
 				<input class="title" type="hidden" name="type" value="url">
 				<p><label>请选择一个图片</label><br/>
 				<input class="title" type="text" name="url" style="width:220px;">
@@ -111,8 +114,10 @@
 				</fieldset>
 			#{/form}
 			<div class="clear"></div>
+			</div>
 		</div>
-		<div id="dlg-add-create-board" class="frame-border">
+		<div id="dlg-add-create-board">
+			<div style="padding:10px;">
 			#{form @Application.createBoard(), id:'url-load-form'}
 				<fieldset>
 				<legend>新建面板</legend>
@@ -129,6 +134,7 @@
 				</fieldset>
 			#{/form}
 			<div class="clear"></div>
+			</div>
 		</div>
 	</div>    
     </body>

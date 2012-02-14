@@ -4,6 +4,8 @@ drop table board;
 
 drop table category;
 
+drop table comment;
+
 drop table img;
 
 drop table paster;

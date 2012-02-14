@@ -32,9 +32,16 @@ public class Paster extends Model{
 		query.setMaxRows(30);
 		return query.findList();
 	}
-	public static List<Paster> findByBoard(String hash) {
-		Query<Paster> query = Paster.find("board.hash = ?" , hash);
-		query.setMaxRows(9);
+	public List<Comment> comments(){
+		Query<Comment> query = Comment.find("paster.id = ?", id);
 		return query.findList();
+	}
+	public void comment(User user, String comment) {
+		Comment c = new Comment();
+		c.paster = this;
+		c.user = user;
+		c.comment = comment;
+		c.createDate = new Date();
+		c.save();
 	}
 }

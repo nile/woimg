@@ -19,12 +19,18 @@ public class Board extends Model{
 	@OneToOne(optional=true)
 	public Category category;
 	public Date createDate = new Date();
-	public static List<Board> findByUser(long uid) {
-		Query<Board> find = Board.find("user.id=?", uid);
-		return find.findList();
-		
-	}
+	
 	public static Board getByHash(String hash) {
 		return Board.findUnique("hash = ?", hash);
 	}
+    public List<Paster> latest(){
+		Query<Paster> query = Paster.find("board.id = ?", id);
+		query.setMaxRows(9);
+		return query.findList();
+    }
+	public List<Paster> pasters() {
+		Query<Paster> query = Paster.find("board.id = ?" , id);
+		return query.findList();
+	}
+
 }
