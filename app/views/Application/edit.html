@@ -1,57 +1,38 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<div class="grid_3 ">
+<div class="grid_9 ">
 	<div class="frame-border">
-	<h3>#{a @Application.viewBoard(paster.board.hash)}${paster.board.name}#{/a}</h3>
-	#{pastersgrid pastersInBorad/}
+		#{form @Application.update()}
+		<fieldset>
+			<input type="hidden" name="obj.hash" value="${paster.hash}">
+			<p><label>请选择一个面板</label><br/>
+			<select class="title" name="obj.board.hash" id="board" >
+				#{list boards, as:'b'}
+				<option value="${b.hash}">${b.name}</option>
+				#{/list}
+			</select>
+			</p>
+			<p><label>描述</label><br/>
+			<textarea class="title" name="obj.info">${paster.info}</textarea>
+			</p>
+			<input class="title" type="submit" value="提交">
+		</fieldset>
+		#{/form}
+		
 	</div>
 </div>
 
-<div class="grid_9">
+<div class="grid_3">
 	<div class="frame-border">
-		<div  style="padding:10px;">
-			#{avatar paster.user/}
-			<h2 class="grid_2">${paster.user.login}</h2>
+		<div style="text-align:center;">
+		<img src="${paster.img.smallLink()}">
 		</div>
-		<div class="clear"></div>
-		<hr/>
-		<div  style="padding:0 10px;">
-			<a class="button" href="javascript:void(0)" onclick="javascript:repaste('${paster.hash}')">重贴</a>
-			#{a @Application.delete(paster.hash), class:'button' }删除#{/a}
-			<div style="margin:20px 0;text-align:center;background-color:#eee;padding:0px 0;">
-			<img src="${paster.img.largeLink()}">
-			</div>
-			<p>${paster.info}</p>
-		</div>
-		<div class="clear"></div>
-		<div id="comments-${paster.hash}">
-		</div>
-		<div class="clear"></div>
-		<div style="padding: 10px; margin: 10px 0;">
-			#{form @Application.comment(), id:'form-comment-'+paster.hash }
-			<div>
-				<input type="hidden" name="hash" value="${paster.hash}">
-				#{avatar paster.user/}
-				<textarea name="comment" style="width:586px; margin-top:0px;height:40px;"></textarea>
-			</div>
-			<div class="right">
-				<input class="" type="submit" value="添加评论">
-			</div>
-			#{/form}
-		</div>
-		<div class="clear"></div>
 	</div>
-	
 </div>
 
 <script>
 $(document).onReady(function (){
-	$('comments-${paster.hash}').load('@{Application.comments(paster.hash)}');
-	$('form-comment-${paster.hash}').remotize({
-		onSuccess: function(r) {
-			$('comments-${paster.hash}').load('@{Application.comments(paster.hash)}');
-		}
-	});
+
 });
 </script>	

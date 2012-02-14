@@ -40,6 +40,13 @@ public class Application extends Controller {
 		Paster paster = Paster.getByHash(hash);
 		render(paster);
 	}
+	public static void update(Paster obj) {
+		Paster paster = Paster.getByHash(obj.hash);
+		paster.info = obj.info;
+		paster.board = Board.getByHash(obj.board.hash);
+		paster.save();
+		view(paster.hash);
+	}
 	public static void delete(String hash) {
 		Paster paster = Paster.getByHash(hash);
 		paster.delete();
