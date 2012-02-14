@@ -4,8 +4,6 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
-	    <!-- Framework CSS -->
-            
         <link rel="stylesheet" media="screen" href="@{'/public/css/reset.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/css/text.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/blueprint/src/forms.css'}">
@@ -13,7 +11,7 @@
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/right.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        <script src="@{'/public/javascripts/right/dialog.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/right/lightbox-src.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/right/selectable.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/woimg.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
@@ -21,7 +19,7 @@
     <body>
     <img src="/public/images/place-holder.png" id="img-holder">
     <div class="container container_12">
-	    <h1 class="grid_8">WOIMG</h1>
+	    <h1 class="grid_8">#{a @Application.index()}WOIMG#{/a}</h1>
 	    <div class="grid_4 right">
 		    <div><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
 		    #{if current_user != null}
@@ -39,55 +37,82 @@
     <script>
     var add_dlg;
     function tool_add(){
-    	add_dlg = new Dialog();
-    	add_dlg.title('Paster')
-		.html('Hi there!')
-		.update($('dlg-tool-add').clone())
-		.show();
+        new Lightbox({showButtons:false, showTitle: false}).show($('dlg-tool-add').clone());
     }
     function add_from_website(){
-    	add_dlg.update($('dlg-add-from-website').clone());
+        new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-from-website').clone());
     }
     function add_from_upload(){
-		add_dlg.update($('dlg-add-from-upload').clone())
+        new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-from-upload').clone());
     }
     function create_board(){
-    	var frm = $('dlg-add-create-board').clone();
-		add_dlg.update(frm);
+        new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-create-board').clone());
+    }
+    function repaste(){
+    
     }
     </script>
     <div id="loading-hiddent-div">
     </div>
-    
+    <!-- 隐藏的对话框的代码 -->
 	<div id="dlg-hidden-div" style="visibility:hidden;">
-		<div id="dlg-tool-add" class="span-4 frame-border">
-			<div>
-			<a href="javascript:void(0)" onclick="javascript:add_from_website()">从网站收藏</a>
-			</div>
-			<div>
+		<div id="dlg-tool-add" class="frame-border">
+			<p><a href="javascript:void(0)" onclick="javascript:add_from_website()">从网站收藏</a></p>
+			<p>
 			<a href="javascript:void(0)" onclick="javascript:add_from_upload()">从文件上传</a>
-			</div>
-			<div>
+			</p>
+			<p>
 			<a href="javascript:void(0)" onclick="javascript:create_board()">新建面板</a>
-			</div>
+			</p>
+			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-upload" class="span-4">
+		<div id="dlg-add-from-upload" class="">
 			上传本地图片
-			#{form @Application.upload(), id:'file-load-form', enctype:'multipart/form-data'}
-				<input type="hidden" name="type" value="file">
-				<input type="file" name="file" style="width:226px;">
-				<input type="submit" value="提交" >
+			#{form @Application.paste(), id:'file-load-form', enctype:'multipart/form-data'}
+				<fieldset>
+				<input class="title" type="hidden" name="type" value="file">
+				<p><label>请选择一个图片</label><br/>
+					<input class="title" type="file" name="file" style="width:226px;">
+				</p>
+				<p><label>请选择一个面板</label><br/>
+				<select class="title" name="board" id="board" >
+					#{list boards, as:'b'}
+					<option value="${b.hash}">${b.name}</option>
+					#{/list}
+				</select>
+				</p>
+				<p><label>描述</label><br/>
+				<textarea class="title" name="desc"></textarea>
+				</p>
+				<input class="title" type="submit" value="提交" >
+				</fieldset>
 			#{/form}
+			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-website" class="span-4">
+		<div id="dlg-add-from-website" class="">
 			收藏网络图片
-			#{form @Application.upload(), id:'url-load-form'}
-				<input type="hidden" name="type" value="url">
-				<input type="text" name="url" style="width:220px;">
-				<input type="submit" value="提交">
+			#{form @Application.paste(), id:'url-load-form'}
+				<fieldset>
+				<input class="title" type="hidden" name="type" value="url">
+				<p><label>请选择一个图片</label><br/>
+				<input class="title" type="text" name="url" style="width:220px;">
+				</p>
+				<p><label>请选择一个面板</label><br/>
+				<select class="title" name="board" id="board" >
+					#{list boards, as:'b'}
+					<option value="${b.hash}">${b.name}</option>
+					#{/list}
+				</select>
+				</p>
+				<p><label>描述</label><br/>
+				<textarea class="title" name="desc"></textarea>
+				</p>
+				<input class="title" type="submit" value="提交">
+				</fieldset>
 			#{/form}
+			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-create-board" class="span-4 frame-border">
+		<div id="dlg-add-create-board" class="frame-border">
 			#{form @Application.createBoard(), id:'url-load-form'}
 				<fieldset>
 				<legend>新建面板</legend>
@@ -103,6 +128,7 @@
 				<input class="title" type="submit" value="提交">
 				</fieldset>
 			#{/form}
+			<div class="clear"></div>
 		</div>
 	</div>    
     </body>

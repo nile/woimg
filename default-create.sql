@@ -41,6 +41,9 @@ create table paster (
   info                      varchar(255),
   board_id                  bigint,
   paste_date                datetime,
+  hash                      varchar(255),
+  parent_id                 bigint,
+  repaste                   bigint,
   constraint pk_paster primary key (id))
 ;
 
@@ -62,5 +65,7 @@ alter table paster add constraint fk_paster_img_4 foreign key (img_id) reference
 create index ix_paster_img_4 on paster (img_id);
 alter table paster add constraint fk_paster_board_5 foreign key (board_id) references board (id) on delete restrict on update restrict;
 create index ix_paster_board_5 on paster (board_id);
+alter table paster add constraint fk_paster_parent_6 foreign key (parent_id) references paster (id) on delete restrict on update restrict;
+create index ix_paster_parent_6 on paster (parent_id);
 
 

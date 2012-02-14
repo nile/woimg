@@ -52,7 +52,7 @@ public class ImgUtil {
 						true));
 		return thumpnailRescaleOp.filter(bi, null);
 	}*/
-	public static BufferedImage t600(BufferedImage bi) {
+	public static BufferedImage s600(BufferedImage bi) {
 		ResampleOp  thumpnailRescaleOp = new ResampleOp (
 				DimensionConstrain.createMaxDimension(600, Integer.MAX_VALUE,
 						true));
@@ -66,11 +66,11 @@ public class ImgUtil {
 				(bi.getHeight() - size) / 2), size, size);
 		BufferedImage croped = cropFilter.filter(bi, null);
 		ResampleOp  thumpnailRescaleOp = new ResampleOp (
-				DimensionConstrain.createAbsolutionDimension(100, 100));
+				DimensionConstrain.createAbsolutionDimension(70, 70));
 		return thumpnailRescaleOp.filter(croped, null);
 	}
 	
-	public static BufferedImage t170(BufferedImage bi) {
+	public static BufferedImage s170(BufferedImage bi) {
 		ResampleOp  thumpnailRescaleOp = new ResampleOp (
 				DimensionConstrain.createMaxDimension(170, Integer.MAX_VALUE));
 		return thumpnailRescaleOp.filter(bi, null);

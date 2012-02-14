@@ -2,19 +2,28 @@
 #{set title:'Home' /}
 
 	<div class="grid_3 ">
-		<div class="frame-border">a</div>
+		<div class="frame-border">
+		<h3>#{a @Application.viewBoard(paster.board.hash)}${paster.board.name}#{/a}</h3>
+		#{list items: pastersInBorad, as: 'p'}
+			#{a @Application.view(p.hash)}<img id="${p.img.hash}" src="${p.img.thumbLink()}" style="width:66px"/>#{/a}
+		#{/list}
+		
+		</div>
 	</div>
 	
 	<div class="grid_9">
-		
 		<div class="frame-border">
-			<div style="text-align:center;background-color:#eee;padding:10px 0;">
-			<img src="${img.largeLink()}">
+		<a href="javascript:void(0)" onclick="javascript:repaste('${paster.hash}')">重贴</a>
+		#{a @Application.delete(paster.hash)}删除#{/a}
+		</div>
+		<br/>
+		<div class="frame-border">
+			<div style="text-align:center;background-color:#eee;padding:0px 0;">
+			<img src="${paster.img.largeLink()}">
 			</div>
-			<div class="caption">标题:${img.caption}</div>
+			<p>${paster.info}</p>
 			
 			<div class="clear"></div>
-			<div>评论</div>
 		</div>
 		
 	</div>

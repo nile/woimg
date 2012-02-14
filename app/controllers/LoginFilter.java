@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Board;
 import models.Category;
 import models.User;
 import play.mvc.Before;
@@ -13,6 +14,7 @@ public class LoginFilter extends Controller {
 			renderArgs.put(KEY_CURRENT_USER,getLoginUser());
 		}
 		renderArgs.put("categories", Category.findAll());
+		renderArgs.put("boards", Board.findAll());
 	}
 	public static User getLoginUser() {
 		return User.getByLogin(session.get(CUser.KEY_SESSION_USER_LOGON));

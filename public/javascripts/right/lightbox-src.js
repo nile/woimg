@@ -197,7 +197,9 @@ var Lightbox = new Widget({
 
       // video links default size
       mediaWidth:      425,
-      mediaHeight:     350
+	mediaHeight:     350,
+	showTitle: true,
+	showButtons: true
     },
 
     i18n: {
@@ -456,9 +458,12 @@ var Dialog = new Class(Element, {
     this.$super('div', {'class': 'rui-lightbox-dialog'});
 
     // building up the
-    this.insert([
-      this.title = $E('div', {'class': 'rui-lightbox-title'}),
+      if(this.options.showTitle){
+    this.insert(
+	this.title = $E('div', {'class': 'rui-lightbox-title'}));
+      }
 
+    this.insert(
       $E('div', {'class': 'rui-lightbox-body'}).insert(
         $E('div', {'class': 'rui-lightbox-body-inner'}).insert([
           this.locker    = $E('div', {'class': 'rui-lightbox-body-locker'}).insert(new Spinner(4)),
@@ -466,19 +471,21 @@ var Dialog = new Class(Element, {
             this.content = $E('div', {'class': 'rui-lightbox-content'})
           )
         ])
-      ),
-
+      ));
+      if(this.options.showButtons){
+      this.insert(
       $E('div', {'class': 'rui-lightbox-navigation'}).insert([
         this.closeButton = $E('div', {'class': 'close', html: '&times;', title: i18n.Close}).onClick('fire', 'close'),
         this.prevLink    = $E('div', {'class': 'prev',  html: '&larr;',  title: i18n.Prev}).onClick('fire',  'prev'),
         this.nextLink    = $E('div', {'class': 'next',  html: '&rarr;',  title: i18n.Next}).onClick('fire',  'next')
-      ])
-    ]);
-
+      ]));
+      }
+    
+  if(this.options.showButtons){
     // presetting the navigation state
     this.prevLink.hide();
     this.nextLink.hide();
-
+  }
     if (!options.showCloseButton) {
       this.closeButton.hide();
     }

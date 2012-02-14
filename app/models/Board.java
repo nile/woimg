@@ -24,4 +24,7 @@ public class Board extends Model{
 		return find.findList();
 		
 	}
+	public static Board getByHash(String hash) {
+		return Board.findUnique("hash = ?", hash);
+	}
 }

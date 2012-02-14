@@ -1,7 +1,11 @@
 <div id="loading-container">
-#{list items: imgs, as: 'img'}
-<div class="img-frame frame-border" data-height="${img.height}" data-hash="${img.hash}"  data-url="${img.smallLink()}" data-width="${img.width}">
-	#{a @Application.view(img.hash)}<img id="${img.hash}" src="/public/images/place-holder.png" style="height:${Math.round((170.0/img.width)*img.height)}px"/>#{/a}
+#{list items: pasters, as: 'p'}
+<div class="img-frame frame-border" data-height="${p.img.height}" data-hash="${p.img.hash}" data-url="@{Application.view(p.hash)}" data-img-url="${p.img.smallLink()}" data-width="${p.img.width}">
+	#{a @Application.view(p.hash)}<img 
+		id="${p.img.hash}" src="/public/images/place-holder.png" style="height:${Math.round((170.0/p.img.width)*p.img.height)}px"
+	/>#{/a}
+	<div class="clear"></div>
+	<div>${p.info}</div>
 </div>	
 #{/list}
 </div>

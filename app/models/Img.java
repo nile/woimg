@@ -43,11 +43,10 @@ public class Img extends Model{
 	public String info;
 	@OneToMany(cascade=CascadeType.ALL)
 	
-	public static Img createFromFile(File file, String caption, String desc, String infomation) {
+	public static Img createFromFile(File file, String desc, String infomation) {
 		Info info = ImgUtil.detectImageType(file);
 		if (info != null) {
 			Img img = new Img();
-			img.caption = caption;
 			img.desciption = desc;
 			img.width = info.w;
 			img.height = info.h;
@@ -86,7 +85,7 @@ public class Img extends Model{
 		return hash + ext;
 	}
 	public String thumbFile() {
-		return hash + "s" + ext;
+		return hash + "t" + ext;
 	}
 	public String smallFile() {
 		return hash + "s" + ext;
