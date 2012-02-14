@@ -93,11 +93,4 @@ public class Img extends Model{
 	public String largeFile() {
 		return hash + "l" + ext;
 	}
-	
-	public static List<Img> latest(){
-		return ebean().createQuery(Img.class).orderBy("createDate desc").setMaxRows(9).findList();
-	}
-	public static Img getByHash(String hash) {
-		return ebean().createQuery(Img.class).where("hash = ?").setParameter(1, hash).findUnique();
-	}
 }

@@ -14,6 +14,10 @@ public class CUser extends Controller{
 	public static void login() {
 		render();
 	}
+	public static void logout() {
+		session.clear();
+		Application.index();
+	}
 	public static void auth(User obj) {
 		User user = User.getByLogin(obj.login);
 		if(StringUtils.equals(user.password,Crypto.passwordHash(obj.password))) {

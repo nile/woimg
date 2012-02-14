@@ -42,14 +42,12 @@ public class Application extends Controller {
 	}
 	public static void update(Paster obj) {
 		Paster paster = Paster.getByHash(obj.hash);
-		paster.info = obj.info;
-		paster.board = Board.getByHash(obj.board.hash);
-		paster.save();
+		paster.update(obj);
 		view(paster.hash);
 	}
 	public static void delete(String hash) {
-		Paster paster = Paster.getByHash(hash);
-		paster.delete();
+		User user = LoginFilter.getLoginUser();
+		Paster paster = user.deletePaster(hash);
 		viewBoard(paster.board.hash);
 	}
 	public static void home(String login) {
@@ -69,12 +67,7 @@ public class Application extends Controller {
 	}
 	public static void createBoard(String name, String category) {
 		User user = LoginFilter.getLoginUser();
-		Board board = new Board();
-		board.user = user;
-		board.category = Category.getByCode(category);
-		board.name = name;
-		board.hash = HashUtil.hash();
-		board.save();
+		user.createBoard(name, category);
 		home(user.login);
 	}
 	public static void comments(String hash) {
@@ -93,61 +86,37 @@ public class Application extends Controller {
 	}
 	public static void repaste(String paster, String board, String desc) {
 		Paster old = Paster.getByHash(paster);
-		Board b = Board.getByHash(board);
-		Paster p = new Paster();
-		p.board = b;
-		p.img = old.img;
-		p.info = desc;
-		p.hash = HashUtil.hash();
-		p.user = LoginFilter.getLoginUser();
-		p.pasteDate = new Date();
-		p.parent = old;
-		p.save();
-		old.repaste = old.repaste+1;
-		old.save();
+		User user = LoginFilter.getLoginUser();
+		Paster p = user.repaste(old, board, desc);
 		view(p.hash);
 	}
 	public static void paste(String type, String url, File file, String desc, String board) {
 		Img img = null;
-		if ("file".equals(type)) {
-			img = Img.createFromFile(file, desc, file.getName());
-			if (img != null) {
-				try {
-					File orignalFile = new File(UPLOAD_DIR,img.orignalFile());
+		File orignalFile = null;
+		try {
+			if ("file".equals(type)) {
+				img = Img.createFromFile(file, desc, file.getName());
+				if (img != null) {
+					orignalFile = new File(UPLOAD_DIR, img.orignalFile());
 					FileUtils.moveFile(file, orignalFile);
-					BufferedImage orignalImg = ImgUtil.read(orignalFile);
-					ImgUtil.write(ImgUtil.t100(orignalImg),img.type, UPLOAD_DIR + File.separatorChar + img.thumbFile());
-					ImgUtil.write(ImgUtil.s170(orignalImg),img.type,UPLOAD_DIR + File.separatorChar + img.smallFile());
-					ImgUtil.write(ImgUtil.s600(orignalImg),img.type,UPLOAD_DIR + File.separatorChar+ img.largeFile());
-				} catch (IOException e) {
-					e.printStackTrace();
 				}
-			}
-		}else if ("url".equals(type)) {
-			File tmpfile = HttpUtil.scrapeUrl(url);
-			img = Img.createFromFile(tmpfile, desc, url);
-			if (img != null) {
-				try {
-					File orignalFile = new File(UPLOAD_DIR, img.orignalFile());
+			} else if ("url".equals(type)) {
+				File tmpfile = HttpUtil.scrapeUrl(url);
+				img = Img.createFromFile(tmpfile, desc, url);
+				if (img != null) {
+					orignalFile = new File(UPLOAD_DIR, img.orignalFile());
 					FileUtils.moveFile(tmpfile, orignalFile);
-					BufferedImage orignalImg = ImgUtil.read(orignalFile);
-					ImgUtil.write(ImgUtil.t100(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.thumbFile());
-					ImgUtil.write(ImgUtil.s170(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.smallFile());
-					ImgUtil.write(ImgUtil.s600(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.largeFile());
-				} catch (IOException e) {
-					e.printStackTrace();
 				}
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		Board b = Board.getByHash(board);
-		Paster p = new Paster();
-		p.board = b;
-		p.img = img;
-		p.info = desc;
-		p.hash = HashUtil.hash();
-		p.user = LoginFilter.getLoginUser();
-		p.pasteDate = new Date();
-		p.save();
+		BufferedImage orignalImg = ImgUtil.read(orignalFile);
+		ImgUtil.write(ImgUtil.t100(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.thumbFile());
+		ImgUtil.write(ImgUtil.s170(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.smallFile());
+		ImgUtil.write(ImgUtil.s600(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.largeFile());
+		User user = LoginFilter.getLoginUser();
+		Paster p = user.paste(img, board, desc);
 		view(p.hash);
 	}
 }

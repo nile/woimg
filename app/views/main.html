@@ -27,6 +27,7 @@
 			    <div><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
 			    #{if current_user != null}
 			    	<a href="@{Application.home(current_user.login)}">${current_user.login}</a>
+			    	<a href="@{CUser.logout()}">退出</a>
 			    #{/if}
 			    #{else}
 			    	<a href="@{CUser.joinin()}">JOIN IN</a>

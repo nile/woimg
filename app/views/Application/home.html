@@ -1,20 +1,24 @@
 #{extends 'main.html' /}
 #{set title:'WOIMG' /}
-<div class="clear"></div>
-	<div class="grid_3">
-		<div class="frame-border">
-		  <h3>#{a @Application.home(current_user.login)}${current_user.login}#{/a}</h3>
-		  #{pastersgrid latestPasters/}
+<div class="grid_3">
+	<div class="frame-border">
+	  <h3>#{a @Application.home(current_user.login)}${current_user.login}#{/a}</h3>
+	  #{pastersgrid latestPasters/}
+	</div>
+</div>
+<div class="grid_9">
+	<div class="frame-border" style="height:24px;margin:0 10px 10px 10px;">
+	${current_user.countBoard()} 个面板  ${current_user.countPaster()} 幅贴画
+	</div>
+	<div class="clear"></div>
+	#{list boards , as: 'board'}
+		<div class="grid_3 " style="margin-right:0px;">
+			<div class="frame-border">
+		  		<h3>#{a @Application.viewBoard(board.hash)}${board.name}#{/a}</h3>
+  		  		#{pastersgrid board.latest()/}
+  		  	</div>
 		</div>
-	</div>
-	<div class="grid_9">
-		<hr/>
-		#{list boards , as: 'board'}
-			<div class="grid_3 frame-border">
-			  <h3>#{a @Application.viewBoard(board.hash)}${board.name}#{/a}</h3>
-	  		  #{pastersgrid board.latest()/}
-			</div>
-		#{/list}
-	</div>
+	#{/list}
+</div>
 
 <div class="clear"></div>

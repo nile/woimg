@@ -28,7 +28,7 @@ public class Paster extends Model{
 		return Paster.findUnique(" hash = ? ", hash);
 	}
 	public static List<Paster> page() {
-		Query<Paster> query = Paster.find("1=1");
+		Query<Paster> query = Paster.find("");
 		query.setMaxRows(30);
 		return query.findList();
 	}
@@ -43,5 +43,10 @@ public class Paster extends Model{
 		c.comment = comment;
 		c.createDate = new Date();
 		c.save();
+	}
+	public void update(Paster obj) {
+		this.info = obj.info;
+		this.board = Board.getByHash(obj.board.hash);
+		this.save();
 	}
 }
