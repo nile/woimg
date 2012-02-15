@@ -29,6 +29,7 @@ public class Paster extends Model{
 	}
 	public static List<Paster> page() {
 		Query<Paster> query = Paster.find("");
+		query.order("pasteDate desc");
 		query.setMaxRows(30);
 		return query.findList();
 	}
