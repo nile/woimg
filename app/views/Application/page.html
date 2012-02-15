@@ -6,6 +6,7 @@
 	/>#{/a}
 	<div class="clear"></div>
 	<div>${p.info}</div>
+	<div class="memo">#{a @Application.home(p.user.login)} ${p.user.login}#{/a} ${p.pasteDate.freindly()} 粘贴在 #{a @CBoard.view(p.board.hash)}${p.board.name}#{/a}</div>
 </div>	
 #{/list}
 </div>

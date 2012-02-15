@@ -435,3 +435,7 @@ input.delete:hover{
 	border: 1px solid #a44444;
 	background: -moz-linear-gradient(center top , #d44444, #F9F7F7 50%, #F6F3F4 50%, #a44444) repeat scroll 0 0 transparent;
 }
+.memo, .memo>a{
+	color: #444;
+	font-size: 10px;
+}

@@ -30,6 +30,7 @@ public class Board extends Model{
     }
 	public List<Paster> pasters() {
 		Query<Paster> query = Paster.find("board.id = ?" , id);
+		query.order("pasteDate desc");
 		return query.findList();
 	}
 	public void update(Board obj) {
