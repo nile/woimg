@@ -24,6 +24,7 @@ public class Paster extends Model{
 	@OneToOne(optional=true)
 	public Paster parent;
 	public long repaste;
+	
 	public static Paster getByHash(String hash) {
 		return Paster.findUnique(" hash = ? ", hash);
 	}
