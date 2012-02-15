@@ -411,6 +411,6 @@ body {
 	font-size: 14px;
 	line-height: 1em;
 }
-a.button{
+a, a.button{
 	text-decoration: none;
 }

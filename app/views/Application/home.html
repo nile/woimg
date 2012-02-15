@@ -14,7 +14,7 @@
 	#{list boards , as: 'board'}
 		<div class="grid_3 " style="margin-right:0px;">
 			<div class="frame-border">
-		  		<h3>#{a @Application.viewBoard(board.hash)}${board.name}#{/a}</h3>
+		  		<h3>#{a @CBoard.view(board.hash)}${board.name}#{/a}</h3>
   		  		#{pastersgrid board.latest()/}
   		  	</div>
 		</div>

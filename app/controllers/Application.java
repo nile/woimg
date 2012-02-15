@@ -48,27 +48,13 @@ public class Application extends Controller {
 	public static void delete(String hash) {
 		User user = LoginFilter.getLoginUser();
 		Paster paster = user.deletePaster(hash);
-		viewBoard(paster.board.hash);
+		CBoard.view(paster.board.hash);
 	}
 	public static void home(String login) {
 		User user = User.getByLogin(login);
 		List<Board> boards = user.myBoards();
 		List<Paster> latestPasters = user.latestPasters();
 		render(boards, latestPasters);
-	}
-	public static void viewBoard(String hash) {
-		Board board = Board.getByHash(hash);
-		render(board);
-	}
-	public static void boardPage(String hash) {
-		Board board = Board.getByHash(hash);
-		List<Paster> pasters = board.pasters();
-		render("Application/page.html",pasters);
-	}
-	public static void createBoard(String name, String category) {
-		User user = LoginFilter.getLoginUser();
-		user.createBoard(name, category);
-		home(user.login);
 	}
 	public static void comments(String hash) {
 		Paster paster = Paster.getByHash(hash);

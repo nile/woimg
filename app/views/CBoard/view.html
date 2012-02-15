@@ -2,7 +2,13 @@
 #{set title:'Home' /}
 <div class="grid_12">
 	<div class="frame-border">
-		<h3>#{a @Application.viewBoard(board.hash)}${board.name}#{/a}</h3>
+		<div class="grid_7">
+		<h3 style="margin-bottom:0px;" >#{a @CBoard.view(board.hash)}${board.name}#{/a}</h3>
+		</div>
+		<div class="grid_4 right" style=" padding: 6px ">
+		#{a @CBoard.edit(board.hash),class:'button'} 编辑 #{/a}
+		</div>
+		<div class="clear"></div>
 	</div>
 </div>
 <div class="clear"></div>

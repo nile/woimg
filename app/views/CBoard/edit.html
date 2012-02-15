@@ -1,0 +1,38 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div class="grid_9 ">
+	<div class="frame-border">
+		#{form @Application.update()}
+		<fieldset>
+			<input type="hidden" name="obj.hash" value="${paster.hash}">
+			<p><label>请选择一个面板</label><br/>
+			<select class="title" name="obj.board.hash" id="board" >
+				#{list boards, as:'b'}
+				<option value="${b.hash}">${b.name}</option>
+				#{/list}
+			</select>
+			</p>
+			<p><label>描述</label><br/>
+			<textarea class="title" name="obj.info">${paster.info}</textarea>
+			</p>
+			<input class="title" type="submit" value="提交">
+		</fieldset>
+		#{/form}
+		
+	</div>
+</div>
+
+<div class="grid_3">
+	<div class="frame-border">
+		<div style="text-align:center;">
+		<img src="${paster.img.smallLink()}">
+		</div>
+	</div>
+</div>
+
+<script>
+$(document).onReady(function (){
+
+});
+</script>	

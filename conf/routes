@@ -8,7 +8,7 @@ GET	/popular	Application.popular
 GET	/view/{hash}	Application.view
 GET	/latest	Application.latest
 GET	/page	Application.page
-GET	/boardpage	Application.boardPage
+GET	/boardpage	CBoard.page
 
 POST /rate/{hash} Application.rate
 

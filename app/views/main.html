@@ -12,7 +12,6 @@
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/right.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/right/lightbox-src.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        <script src="@{'/public/javascripts/right/selectable.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/woimg.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
     </head>
@@ -21,9 +20,9 @@
 	    <img src="/public/images/place-holder.png" id="img-holder">
     </div>
     <div class="container_12">
-    	<div>
-		    <h1 class="grid_8">#{a @Application.index()}WOIMG#{/a}</h1>
-		    <div class="grid_4 right">
+    	<div style="">
+		    <h1 class="grid_8" style="margin-bottom:0px;">#{a @Application.index()}WOIMG#{/a}</h1>
+		    <div class="grid_4 right" style="line-height:38px;">
 			    <div><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
 			    #{if current_user != null}
 			    	<a href="@{Application.home(current_user.login)}">${current_user.login}</a>
@@ -35,6 +34,7 @@
 			    </div>
 		    </div>
 		    <hr class="grid_12"/>
+		    <div class="clear"></div>
 	  	</div>
 	    <div class="clear"></div>
 	    #{doLayout /}
@@ -119,7 +119,7 @@
 		</div>
 		<div id="dlg-add-create-board">
 			<div style="padding:10px;">
-			#{form @Application.createBoard(), id:'url-load-form'}
+			#{form @CBoard.create(), id:'url-load-form'}
 				<fieldset>
 				<legend>新建面板</legend>
 				<p><label>名称</label><br/>
