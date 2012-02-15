@@ -23,13 +23,14 @@
     	<div style="">
 		    <h1 class="grid_8" style="margin-bottom:0px;">#{a @Application.index()}WOIMG#{/a}</h1>
 		    <div class="grid_4 right" style="line-height:38px;">
-			    <div><a href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
+			    <div>
+			    <a class="menu-button" href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
 			    #{if current_user != null}
-			    	<a href="@{Application.home(current_user.login)}">${current_user.login}</a>
-			    	<a href="@{CUser.logout()}">退出</a>
+			    	<a class="menu-button" href="@{Application.home(current_user.login)}">${current_user.login}</a>
+			    	<a class="menu-button" href="@{CUser.logout()}">退出</a>
 			    #{/if}
 			    #{else}
-			    	<a href="@{CUser.joinin()}">JOIN IN</a>
+			    	<a class="menu-button" href="@{CUser.joinin()}">JOIN IN</a>
 			    #{/else}
 			    </div>
 		    </div>
@@ -69,7 +70,7 @@
 			</p>
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-upload" class="">
+		<div id="dlg-add-from-upload" class="frame-border"  style="margin:5px;">
 			上传本地图片
 			#{form @Application.paste(), id:'file-load-form', enctype:'multipart/form-data'}
 				<fieldset>
@@ -92,8 +93,7 @@
 			#{/form}
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-website" >
-			<div style="padding:10px;">
+		<div id="dlg-add-from-website" class="frame-border"  style="margin:5px;">
 			#{form @Application.paste(), id:'url-load-form'}
 				<fieldset>
 				<legend>收藏网络图片</legend>
@@ -115,10 +115,8 @@
 				</fieldset>
 			#{/form}
 			<div class="clear"></div>
-			</div>
 		</div>
-		<div id="dlg-add-create-board">
-			<div style="padding:10px;">
+		<div id="dlg-add-create-board" class="frame-border"  style="margin:5px;">
 			#{form @CBoard.create(), id:'url-load-form'}
 				<fieldset>
 				<legend>新建面板</legend>
@@ -135,7 +133,6 @@
 				</fieldset>
 			#{/form}
 			<div class="clear"></div>
-			</div>
 		</div>
 	</div>    
     </body>

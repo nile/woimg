@@ -18,10 +18,10 @@
 		<hr/>
 		<div  style="padding:0 10px;">
 			<a class="button" href="javascript:void(0)" onclick="javascript:repaste('${paster.hash}')">重贴</a>
-			#{if current_user && current_user.id == paster.user.id}
-			#{a @Application.edit(paster.hash), class:'button' }编辑#{/a}
-			#{a @Application.delete(paster.hash), class:'button' }删除#{/a}
-			#{/if}
+			#{haspermission user:current_user, target: paster, operation: 'edit'}
+				#{a @Application.edit(paster.hash), class:'button' }编辑#{/a}
+				#{a @Application.delete(paster.hash), class:'button' }删除#{/a}
+			#{/haspermission}
 			<div style="margin:20px 0;text-align:center;background-color:#eee;padding:0px 0;">
 				<img src="${paster.img.largeLink()}">
 			</div>

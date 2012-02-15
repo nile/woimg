@@ -3,20 +3,21 @@
 
 <div class="grid_9 ">
 	<div class="frame-border">
-		#{form @Application.update()}
+		#{form @CBoard.update()}
 		<fieldset>
-			<input type="hidden" name="obj.hash" value="${paster.hash}">
-			<p><label>请选择一个面板</label><br/>
-			<select class="title" name="obj.board.hash" id="board" >
-				#{list boards, as:'b'}
-				<option value="${b.hash}">${b.name}</option>
+			<input type="hidden" name="obj.hash" value="${board.hash}">
+			<p><label>名称</label><br/>
+			<input type="text" class="title" name="obj.name" value="${board.name}">
+			</p>
+			<p><label>请选择一个分类</label><br/>
+			<select class="title" name="obj.category.code" id="board" >
+				#{list categories, as:'b'}
+				<option value="${b.code}">${b.name}</option>
 				#{/list}
 			</select>
 			</p>
-			<p><label>描述</label><br/>
-			<textarea class="title" name="obj.info">${paster.info}</textarea>
-			</p>
-			<input class="title" type="submit" value="提交">
+			<input class="ok" type="submit" value="提交">
+			<input class="delete" type="submit" value="删除">
 		</fieldset>
 		#{/form}
 		
@@ -25,9 +26,8 @@
 
 <div class="grid_3">
 	<div class="frame-border">
-		<div style="text-align:center;">
-		<img src="${paster.img.smallLink()}">
-		</div>
+		<h3>#{a @CBoard.view(board.hash)}${board.name}#{/a}</h3>
+		#{pastersgrid board.latest()/}
 	</div>
 </div>
 

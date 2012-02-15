@@ -6,7 +6,9 @@
 		<h3 style="margin-bottom:0px;" >#{a @CBoard.view(board.hash)}${board.name}#{/a}</h3>
 		</div>
 		<div class="grid_4 right" style=" padding: 6px ">
-		#{a @CBoard.edit(board.hash),class:'button'} 编辑 #{/a}
+		#{haspermission user:current_user, target:board, operation:'edit'}
+			#{a @CBoard.edit(board.hash),class:'button'} 编辑 #{/a}
+		#{/haspermission}
 		</div>
 		<div class="clear"></div>
 	</div>

@@ -32,5 +32,10 @@ public class Board extends Model{
 		Query<Paster> query = Paster.find("board.id = ?" , id);
 		return query.findList();
 	}
+	public void update(Board obj) {
+		this.category = Category.getByCode(obj.category.code);
+		this.name = obj.name;
+		this.save();
+	}
 
 }

@@ -403,14 +403,35 @@ body {
 .right{
 	text-align: right;
 }
-.button{
+.button,input[type=submit]{
 	border: 1px solid #a4a4a4;
 	padding: 5px 10px;
 	background: -moz-linear-gradient(center top , #FDFAFB, #F9F7F7 50%, #F6F3F4 50%, #F0EDED) repeat scroll 0 0 transparent;
 	border-radius: 4px;
 	font-size: 14px;
 	line-height: 1em;
+	width:auto;
+}
+a.button:hover,input[type=submit]:hover{
+	border: 1px solid #a4a4a4;
+	background: -moz-linear-gradient(center top , #eee, #F9F7F7 50%, #F6F3F4 50%, #eee) repeat scroll 0 0 transparent;
 }
 a, a.button{
 	text-decoration: none;
+}
+
+a.menu-button, a.menu-button:hover{
+	line-height: 1em;
+	padding: 8px;
+}
+a.menu-button:hover{
+	background-color:#eee;
+}
+input.delete{
+	border: 1px solid #a44444;
+	background: -moz-linear-gradient(center top , #a44444, #F9F7F7 50%, #F6F3F4 50%, #a44444) repeat scroll 0 0 transparent;
+}
+input.delete:hover{
+	border: 1px solid #a44444;
+	background: -moz-linear-gradient(center top , #d44444, #F9F7F7 50%, #F6F3F4 50%, #a44444) repeat scroll 0 0 transparent;
 }
