@@ -24,6 +24,15 @@ public class MagicScaler extends Scaler {
 	@Override
 	public BufferedImage scale(String infile, String tofile, BufferedImage bi,
 			int width, int height) {
+		
+		int imgwidth = bi.getWidth();
+		int imgheight = bi.getHeight();
+		if(width<imgwidth&&height<imgheight) {
+			//do nothing
+			return null;
+		}
+		width = Math.min(width, imgwidth);
+		height = Math.min(height, imgheight);
 		String command = String
 				.format("gm convert -size %1$sx%2$s %3$s -resize %1$sx%2$s -quality 95 %4$s",
 						width, height, infile, tofile);
