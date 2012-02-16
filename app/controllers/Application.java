@@ -23,7 +23,7 @@ import utils.ImgUtil;
 @With(LoginFilter.class)
 public class Application extends Controller {
 	
-	public static String UPLOAD_DIR="public/upload";
+	public static String UPLOAD_DIR="public"+File.separatorChar+"upload";
 	public static void index() {
 		render();
 	}
@@ -98,9 +98,13 @@ public class Application extends Controller {
 			e.printStackTrace();
 		}
 		BufferedImage orignalImg = ImgUtil.read(orignalFile);
-		ImgUtil.write(ImgUtil.t100(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.thumbFile());
-		ImgUtil.write(ImgUtil.s170(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.smallFile());
-		ImgUtil.write(ImgUtil.s600(orignalImg), img.type, UPLOAD_DIR + File.separatorChar + img.largeFile());
+		String orignalPath = orignalFile.getPath();
+		String thumb = UPLOAD_DIR + File.separatorChar + img.thumbFile();
+		ImgUtil.write(ImgUtil.t100(orignalPath,thumb, orignalImg), img.type, thumb);
+		String small = UPLOAD_DIR + File.separatorChar + img.smallFile();
+		ImgUtil.write(ImgUtil.s170(orignalPath,small, orignalImg), img.type, small);
+		String large = UPLOAD_DIR + File.separatorChar + img.largeFile();
+		ImgUtil.write(ImgUtil.s600(orignalPath, large,orignalImg), img.type, large);
 		User user = LoginFilter.getLoginUser();
 		Paster p = user.paste(img, board, desc);
 		view(p.hash);
