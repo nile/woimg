@@ -28,8 +28,6 @@ class ImgSerializer implements JsonSerializer<Img> {
 		String iso = sdf.format(img.createDate);
 		object.add("createDate", new JsonPrimitive(iso));
 		object.add("viewLink", new JsonPrimitive(img.viewLink()));
-		object.add("views", new JsonPrimitive(img.views));
-		object.add("votes", new JsonPrimitive(img.votes));
 		object.add("orignalLink", new JsonPrimitive(img.orignalLink()));
 		object.add("largeLink", new JsonPrimitive(img.largeLink()));
 		object.add("smallLink", new JsonPrimitive(img.smallLink()));

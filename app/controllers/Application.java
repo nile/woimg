@@ -14,6 +14,7 @@ import models.Paster;
 import models.User;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 
 import play.mvc.Controller;
 import play.mvc.With;
@@ -76,7 +77,7 @@ public class Application extends Controller {
 		Paster p = user.repaste(old, board, desc);
 		view(p.hash);
 	}
-	public static void paste(String type, String url, File file, String desc, String board) {
+	public static void paste(String type, String url, File file, String desc, String board, String site, String link, String client) {
 		Img img = null;
 		File orignalFile = null;
 		try {
@@ -86,6 +87,9 @@ public class Application extends Controller {
 					orignalFile = new File(UPLOAD_DIR, img.orignalFile());
 					FileUtils.moveFile(file, orignalFile);
 				}
+				img.source = type;
+				img.media = file.getName();
+				img.save();
 			} else if ("url".equals(type)) {
 				File tmpfile = HttpUtil.scrapeUrl(url);
 				img = Img.createFromFile(tmpfile, desc, url);
@@ -93,9 +97,13 @@ public class Application extends Controller {
 					orignalFile = new File(UPLOAD_DIR, img.orignalFile());
 					FileUtils.moveFile(tmpfile, orignalFile);
 				}
+				img.source = type;
+				img.media = url;
+				img.url = site;
+				img.save();
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			error(e);
 		}
 		BufferedImage orignalImg = ImgUtil.read(orignalFile);
 		String orignalPath = orignalFile.getPath();
@@ -106,7 +114,10 @@ public class Application extends Controller {
 		String large = UPLOAD_DIR + File.separatorChar + img.largeFile();
 		ImgUtil.write(ImgUtil.s600(orignalPath, large,orignalImg), img.type, large);
 		User user = LoginFilter.getLoginUser();
-		Paster p = user.paste(img, board, desc);
+		Paster p = user.paste(img, board, desc, link);
+		if(StringUtils.equals(client,"bookmarklet")) {
+			render("closewin.html");
+		}
 		view(p.hash);
 	}
 }

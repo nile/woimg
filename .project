@@ -15,11 +15,6 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.playframework.playclipse.playNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>ebean-1.0.5</name>
-			<type>2</type>
-			<location>D:/dev/play-1.2.3/modules/ebean-1.0.5/src</location>
-		</link>
-	</linkedResources>
+	<linkedResources><link><name>ebean-1.0.6</name><type>2</type><location>D:/work/git/woimg/modules/ebean-1.0.6/app</location></link>
+</linkedResources>
 </projectDescription>

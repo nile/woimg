@@ -20,7 +20,7 @@ public class CBoard extends Controller{
 	}
 	public static void update(Board obj) {
 		Board board = Board.getByHash(obj.hash);
-		board.update(obj);
+		board.edit(obj);
 		view(obj.hash);
 	}
 	public static void view(String hash) {

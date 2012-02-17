@@ -33,7 +33,7 @@ public class Board extends Model{
 		query.order("pasteDate desc");
 		return query.findList();
 	}
-	public void update(Board obj) {
+	public void edit(Board obj) {
 		this.category = Category.getByCode(obj.category.code);
 		this.name = obj.name;
 		this.save();

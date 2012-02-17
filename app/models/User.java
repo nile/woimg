@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.avaje.ebean.Query;
 
 import controllers.LoginFilter;
@@ -60,7 +62,7 @@ public class User  extends Model{
 		old.save();
 		return p;
 	}
-	public Paster paste(Img img, String board, String desc) {
+	public Paster paste(Img img, String board, String desc, String link) {
 		Board b = Board.getByHash(board);
 		Paster p = new Paster();
 		p.board = b;
@@ -68,6 +70,7 @@ public class User  extends Model{
 		p.info = desc;
 		p.hash = HashUtil.hash();
 		p.user = this;
+		p.link = StringUtils.isNotEmpty(link)?link:img.url;
 		p.pasteDate = new Date();
 		p.save();
 		return p;

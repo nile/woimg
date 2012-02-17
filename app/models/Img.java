@@ -33,15 +33,11 @@ public class Img extends Model{
 	public String deleteHash;
 	@Column(name="createdate")
 	public Date createDate;
-	
-	//extends
-	public long views;
-	public double votes;
-	public long votetotal;
-	public long votecount;
-	
 	public String info;
-	@OneToMany(cascade=CascadeType.ALL)
+
+	public String source;
+	public String media;
+	public String url;
 	
 	public static Img createFromFile(File file, String desc, String infomation) {
 		Info info = ImgUtil.detectImageType(file);

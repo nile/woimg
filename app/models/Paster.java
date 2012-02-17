@@ -25,6 +25,8 @@ public class Paster extends Model{
 	public Paster parent;
 	public long repaste;
 	
+	public String link;
+	
 	public static Paster getByHash(String hash) {
 		return Paster.findUnique(" hash = ? ", hash);
 	}

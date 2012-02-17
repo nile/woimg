@@ -9,6 +9,7 @@ GET	/view/{hash}	Application.view
 GET	/latest	Application.latest
 GET	/page	Application.page
 GET	/boardpage	CBoard.page
+GET /paste/create/bookmarklet/ Bookmarklet.create 
 
 POST /rate/{hash} Application.rate
 

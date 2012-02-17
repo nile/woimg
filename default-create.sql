@@ -35,11 +35,10 @@ create table img (
   hash                      varchar(255),
   deletehash                varchar(255),
   createdate                datetime,
-  views                     bigint,
-  votes                     double,
-  votetotal                 bigint,
-  votecount                 bigint,
   info                      varchar(255),
+  source                    varchar(255),
+  media                     varchar(255),
+  url                       varchar(255),
   constraint pk_img primary key (id))
 ;
 
@@ -53,6 +52,7 @@ create table paster (
   hash                      varchar(255),
   parent_id                 bigint,
   repaste                   bigint,
+  link                      varchar(255),
   constraint pk_paster primary key (id))
 ;
 
