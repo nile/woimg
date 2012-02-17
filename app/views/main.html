@@ -25,6 +25,7 @@
 		    <h1 class="grid_8" style="margin-bottom:0px;">#{a @Application.index()}<img src="@{'/public/images/logo.png'}">#{/a}</h1>
 		    <div class="grid_4 right" style="line-height:38px;">
 			    <div>
+			    <a href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://localhost:9000/public/javascripts/pastemarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());">贴</a>
 			    <a class="menu-button" href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
 			    #{if current_user != null}
 			    	<a class="menu-button" href="@{Application.home(current_user.login)}">${current_user.login}</a>
