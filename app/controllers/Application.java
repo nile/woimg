@@ -12,6 +12,7 @@ import models.Comment;
 import models.Img;
 import models.Paster;
 import models.User;
+import notifiers.Mails;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -75,6 +76,7 @@ public class Application extends Controller {
 		Paster old = Paster.getByHash(paster);
 		User user = LoginFilter.getLoginUser();
 		Paster p = user.repaste(old, board, desc);
+		Mails.repaste(p);
 		view(p.hash);
 	}
 	public static void paste(String type, String url, File file, String desc, String board, String site, String link, String client) {

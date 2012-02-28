@@ -446,3 +446,14 @@ input.delete:hover{
 	background: url(../images/topmenubg.png); 
 	width: 100%;
 }
+ul.horizotal-menu, ul.horizotal-menu>li>ul{
+	display: inline;
+	padding:8px 1px;
+}
+ul.horizotal-menu>li, ul.horizotal-menu>li>ul>li{
+	display: inline;
+	margin-left: 2px;
+}
+ul.horizotal-menu>li>ul{
+	display: none;
+}

@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>#{get 'title' /}</title>
+        <title>#{get 'title' /}-云贴 分享你的图片</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/css/reset.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/css/text.css'}">
@@ -22,18 +22,36 @@
     <div class="topmenu">
     <div class="container_12">
     	<div style="">
-		    <h1 class="grid_8" style="margin-bottom:0px;">#{a @Application.index()}<img src="@{'/public/images/logo.png'}">#{/a}</h1>
-		    <div class="grid_4 right" style="line-height:38px;">
-			    <div style="padding-top:10px;">
-			    把 <a class="button" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://www.jsxnc.com/public/javascripts/pastemarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());">贴</a> 拖放到工具栏
-			    <a class="menu-button" href="javascript:void(0);" onclick="javascript:tool_add();">+ADD</a>		    
+		    <h1 class="grid_3" style="margin-bottom:0px;">#{a @Application.index()}<img src="@{'/public/images/logo.png'}">#{/a}</h1>
+		    <div class="grid_9 right" style="line-height:38px;">
+			    <div style="padding-top:10px;" >
+			    <span>把 <a class="button" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://www.jsxnc.com/public/javascripts/pastemarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());">贴</a> 拖放到工具栏
+			    </span>
+			    <ul class="horizotal-menu">
+			    <li><span ><a title="go" class="menu-button" href="javascript:void(0);" onclick="javascript:tool_add();">+添加</a></span>
+			    	<ul >
+			    	<li><a class="menu-button" href="#" onclick="add_from_website()">从网站添加</a></li>
+			    	<li><a class="menu-button" href="#" onclick="javascript:add_from_upload()">从文件上传</a></li></ul>
+			    </li>
+			    		    
 			    #{if current_user != null}
-			    	<a class="menu-button" href="@{Application.home(current_user.login)}">${current_user.login}</a>
-			    	<a class="menu-button" href="@{CUser.logout()}">退出</a>
+			    <li><span><a class="menu-button" href="#">${current_user.login}</a></span>
+			    	<ul>
+					    <li><a class="menu-button" href="@{Application.home(current_user.login)}">我的图片</a></li>
+					    <li><a class="menu-button" href="@{CUser.logout()}">退出</a></li>
+			    	</ul>
+			    </li>
 			    #{/if}
 			    #{else}
-			    	<a class="menu-button" href="@{CUser.joinin()}">JOIN IN</a>
+			    <li>
+			    	<span><a class="menu-button" href="#">JOIN IN</a></span>
+			    	<ul >
+			    	<li><a class="menu-button" href="@{CUser.login()}">登录</a></li>
+			    	<li><a href="#" class="menu-button">注册</a></li>
+			    	</ul>
+			    	</li>
 			    #{/else}
+			    </ul>
 			    </div>
 		    </div>
 		    <div class="clear"></div>
@@ -48,7 +66,7 @@
     </div>
     <script>
     function tool_add(){
-        new Lightbox({showButtons:false, showTitle: false}).show($('dlg-tool-add').clone());
+       // new Lightbox({showButtons:false, showTitle: false}).show($('dlg-tool-add').clone());
     }
     function add_from_website(){
         new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-from-website').clone());
@@ -140,6 +158,7 @@
 			#{/form}
 			<div class="clear"></div>
 		</div>
-	</div>    
+	</div>
+	    
     </body>
 </html>

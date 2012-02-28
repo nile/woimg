@@ -6,6 +6,8 @@ drop table category;
 
 drop table comment;
 
+drop table config;
+
 drop table img;
 
 drop table paster;

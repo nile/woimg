@@ -24,6 +24,13 @@ create table comment (
   constraint pk_comment primary key (id))
 ;
 
+create table config (
+  id                        bigint auto_increment not null,
+  name                      varchar(255),
+  value                     varchar(255),
+  constraint pk_config primary key (id))
+;
+
 create table img (
   id                        bigint auto_increment not null,
   caption                   varchar(255),
@@ -62,6 +69,7 @@ create table user (
   password                  varchar(255),
   email                     varchar(255),
   avatar                    varchar(255),
+  name                      varchar(255),
   constraint pk_user primary key (id))
 ;
 

@@ -1,0 +1,14 @@
+#{extends "main.html"/}
+#{list configs, as: 'config'}
+  #{form @System.update()}
+    <input name="name" type="text" value="${config.name}">
+    <input name="value" type="text" value="${config.value}">
+    <input type="submit" value="保存">
+    #{a @System.clear(config.name)} 清除 #{/a}
+  #{/form}
+#{/list}
+#{form @System.update()}
+  <input name="name" type="text">
+  <input name="value" type="text">
+  <input type="submit" value="保存">
+#{/form}

@@ -19,6 +19,7 @@ public class User  extends Model{
 	public String password;
 	public String email;
 	public String avatar;
+	public String name;
 	public static User getByLogin(String login) {
 		User user = User.findUnique("login = ?", login);
 		return user;

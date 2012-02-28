@@ -1,5 +1,7 @@
 package controllers;
 
+import notifiers.Mails;
+
 import org.apache.commons.lang.StringUtils;
 
 import models.User;
@@ -29,6 +31,7 @@ public class CUser extends Controller{
 	public static void register(User obj) {
 		obj.password = Crypto.passwordHash(obj.password);
 		obj.save();
+		Mails.welcome(obj);
 		login();
 	}
 }

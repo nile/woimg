@@ -72,3 +72,22 @@ var WoImg = new Class({
 			});	
 	}
 });
+
+$(document).onReady(function(){
+	$$('ul.horizotal-menu').each(function(element, i){
+		element.children('li')
+			.each('onClick',function(event){
+				$$('ul.submenu-current').each(function(e,i){
+					e.setStyle('display','none');;
+					e.toggleClass('submenu-current');
+					});
+				element = event.target.parent('li');
+				if(element.first('ul')){
+					submenu = element.first('ul');
+					submenu.toggleClass('submenu-current');
+					submenu.setStyle('display','inline');
+					submenu.highlight();
+				}
+			});
+	});
+});
