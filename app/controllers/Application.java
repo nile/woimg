@@ -3,11 +3,15 @@ package controllers;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import models.Board;
-import models.Category;
 import models.Comment;
 import models.Img;
 import models.Paster;
@@ -16,10 +20,13 @@ import notifiers.Mails;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import play.mvc.Controller;
 import play.mvc.With;
-import utils.HashUtil;
 import utils.HttpUtil;
 import utils.ImgUtil;
 @With(LoginFilter.class)
@@ -79,7 +86,27 @@ public class Application extends Controller {
 		Mails.repaste(p);
 		view(p.hash);
 	}
-	public static void paste(String type, String url, File file, String desc, String board, String site, String link, String client) {
+	public static void findimages(String url) {
+		try {
+			Document doc = Jsoup.parse(new URL(url), 10000);
+			Elements imgs = doc.select("img");
+			ArrayList<Map> images = new ArrayList<Map>();
+			Iterator<Element> iter = imgs.iterator();
+			while(iter.hasNext()) {
+				Element e = iter.next();
+				HashMap<String, String> img = new HashMap<String, String>();
+				img.put("title", StringUtils.isNotEmpty(e.attr("alt"))?e.attr("alt"):e.attr("title"));
+				img.put("url", e.absUrl("src"));
+				images.add(img);
+			}
+			renderJSON(images);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void paste(String type, String imgurl, File file, String desc, String board, String site, String link, String client) {
 		Img img = null;
 		File orignalFile = null;
 		try {
@@ -93,14 +120,14 @@ public class Application extends Controller {
 				img.media = file.getName();
 				img.save();
 			} else if ("url".equals(type)) {
-				File tmpfile = HttpUtil.scrapeUrl(url);
-				img = Img.createFromFile(tmpfile, desc, url);
+				File tmpfile = HttpUtil.scrapeUrl(imgurl);
+				img = Img.createFromFile(tmpfile, desc, imgurl);
 				if (img != null) {
 					orignalFile = new File(UPLOAD_DIR, img.orignalFile());
 					FileUtils.moveFile(tmpfile, orignalFile);
 				}
 				img.source = type;
-				img.media = url;
+				img.media = imgurl;
 				img.url = site;
 				img.save();
 			}

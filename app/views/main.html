@@ -31,24 +31,27 @@
 			    <ul class="horizotal-menu">
 			    <li><span ><a title="go" class="menu-button" href="javascript:void(0);" onclick="javascript:tool_add();">+添加</a></span>
 			    	<ul >
-			    	<li><a class="menu-button" href="#" onclick="add_from_website()">从网站添加</a></li>
-			    	<li><a class="menu-button" href="#" onclick="javascript:add_from_upload()">从文件上传</a></li></ul>
+			    	<li><a class="menu-button" href="javascript:void(0)" onclick="add_from_website()">从网站添加</a></li>
+			    	<li><a class="menu-button" href="javascript:void(0)" onclick="javascript:add_from_upload()">从文件上传</a></li>
+			    	<li><a class="menu-button" href="javascript:void(0)" onclick="javascript:create_board()">新建面板</a></li>
+			    	</ul>
 			    </li>
 			    		    
 			    #{if current_user != null}
-			    <li><span><a class="menu-button" href="#">${current_user.login}</a></span>
+			    <li><span><a class="menu-button" href="javascript:void(0)">${current_user.login}</a></span>
 			    	<ul>
 					    <li><a class="menu-button" href="@{Application.home(current_user.login)}">我的图片</a></li>
+					    <li><a class="menu-button" href="@{Application.home(current_user.login)}">设置</a></li>
 					    <li><a class="menu-button" href="@{CUser.logout()}">退出</a></li>
 			    	</ul>
 			    </li>
 			    #{/if}
 			    #{else}
 			    <li>
-			    	<span><a class="menu-button" href="#">JOIN IN</a></span>
+			    	<span><a class="menu-button" href="javascript:void(0)">JOIN IN</a></span>
 			    	<ul >
 			    	<li><a class="menu-button" href="@{CUser.login()}">登录</a></li>
-			    	<li><a href="#" class="menu-button">注册</a></li>
+			    	<li><a class="menu-button" href="@{CUser.joinin()}">注册</a></li>
 			    	</ul>
 			    	</li>
 			    #{/else}
@@ -95,7 +98,7 @@
 			</p>
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-upload" class="frame-border"  style="margin:5px;">
+		<div id="dlg-add-from-upload" class=""  style="margin:5px;">
 			上传本地图片
 			#{form @Application.paste(), id:'file-load-form', enctype:'multipart/form-data'}
 				<fieldset>
@@ -118,20 +121,30 @@
 			#{/form}
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-website" class="frame-border"  style="margin:5px;">
+		<div id="dlg-add-from-website" class=""  style="margin:5px;">
 			#{form @Application.paste(), id:'url-load-form'}
 				<fieldset>
 				<legend>收藏网络图片</legend>
-				<input class="title" type="hidden" name="type" value="url">
+				<input type="hidden" name="type" value="url">
+				<input type="hidden" name="imgurl" value="url">
 				<p><label>请选择一个图片</label><br/>
 				<input class="title" type="text" name="url" style="width:220px;">
+				<a href="javascript:void(0)" onclick="javascript:find_images(event)">找图片</a>
 				</p>
+				
 				<p><label>请选择一个面板</label><br/>
+				<div>
+				<div style="display:inline;width:100px;height:100px;">
+					<img style="max-width:100px;max-height:100px;" src="/public/images/place-holder.png" id="preview_img"><br/>
+					<a href="javascript:void(0)" onclick="javascript:prev_image(event)">上一个</a>
+					<a href="javascript:void(0)" onclick="javascript:next_image(event)">下一个</a>
+				</div>
 				<select class="title" name="board" id="board" >
 					#{list boards, as:'b'}
 					<option value="${b.hash}">${b.name}</option>
 					#{/list}
 				</select>
+				</div>
 				</p>
 				<p><label>描述</label><br/>
 				<textarea class="title" name="desc"></textarea>
@@ -141,7 +154,7 @@
 			#{/form}
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-create-board" class="frame-border"  style="margin:5px;">
+		<div id="dlg-add-create-board" class=""  style="margin:5px;">
 			#{form @CBoard.create(), id:'url-load-form'}
 				<fieldset>
 				<legend>新建面板</legend>

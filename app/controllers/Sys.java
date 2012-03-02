@@ -6,7 +6,7 @@ import models.Config;
 import play.libs.Mail;
 import play.mvc.Controller;
 
-public class System extends Controller{
+public class Sys extends Controller{
 	public static void config() {
 		List<Config> configs = Config.listAll();
 		render(configs);

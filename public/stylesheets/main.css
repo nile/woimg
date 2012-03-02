@@ -452,8 +452,12 @@ ul.horizotal-menu, ul.horizotal-menu>li>ul{
 }
 ul.horizotal-menu>li, ul.horizotal-menu>li>ul>li{
 	display: inline;
-	margin-left: 2px;
+	margin: 0px;
 }
 ul.horizotal-menu>li>ul{
 	display: none;
+	background-color: #ccc;
+	border-left: 1px solid #999;
+	border-right: 0px solid #999;
+	border-top: 0px solid #999;
 }
