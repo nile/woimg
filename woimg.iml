@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://D:/dev/play-1.2.4/framework/play-1.2.4.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/Filters-src.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/Filters.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/httpclient-4.1.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/httpcore-4.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/httpmime-4.1.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/java-image-scaling-0.8.5-sources.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/java-image-scaling-0.8.5.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jsoup-1.6.1-sources.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jsoup-1.6.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/modules/ebean-1.0.6/lib/ebean-2.7.4.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/modules/ebean-1.0.6/lib/play-ebean-1.0.6.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/activation-1.1.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/antlr-2.7.6.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/asm-all-3.3.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/async-http-client-1.6.5.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/bcprov-jdk15-1.45.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/c3p0-0.9.1.2.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/cglib-nodep-2.2.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-beanutils-1.8.3.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-codec-1.4.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-collections-3.2.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-email-1.2.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-fileupload-1.2.2.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-io-2.0.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-javaflow-1066591.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-lang-2.6.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/commons-logging-1.1.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/dom4j-1.6.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/ehcache-core-2.0.0.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/ezmorph-1.0.3.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/geronimo-servlet_2.5_spec-1.2.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/groovy-all-1.7.10.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/gson-1.7.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/h2-1.3.149.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/hibernate-commons-annotations-3.2.0.Final.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/hibernate-core-3.6.1.Final.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/hibernate-entitymanager-3.6.0.Final.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/ivy-2.2.0.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jamon-2.7.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/javassist-3.9.0.GA.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/javax.inject-1.0.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jaxen-1.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jj-imaging.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jj-simplecaptcha.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jj-textile.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jj-wikitext.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/joda-time-2.0.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jregex-1.2_01.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jsr107cache-1.0.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/jta-1.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/junit-4.8.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/log4j-1.2.16.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/mail-1.4.3.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/memcached-2.6.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/mysql-connector-java-5.1.13.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/netty-3.2.5.Final.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/org.eclipse.jdt.core-3.8.0.v_C03.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/oval-1.50.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/postgresql-9.0.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/signpost-core-1.2.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/slf4j-api-1.6.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/slf4j-log4j12-1.6.1.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/snakeyaml-1.7.jar!/" />
+    <libelement value="jar://D:/dev/play-1.2.4/framework/lib/xstream-1.3.jar!/" />
+    <varelement var="file://$MODULE_DIR$/modules/ebean-1.0.6/app" kind="linksrc:" value="ebean-1.0.6" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/app" expected_position="0" />
+      <src_folder value="file://$MODULE_DIR$/test" expected_position="1" />
+      <src_folder value="file://$MODULE_DIR$/modules/ebean-1.0.6/app" expected_position="2" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/eclipse/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/modules/ebean-1.0.6/app">
+      <sourceFolder url="file://$MODULE_DIR$/modules/ebean-1.0.6/app" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\play-1.2.4.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/play-1.2.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://D:/dev/play-1.2.4/framework/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\Filters-src.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/Filters-src.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\Filters.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/Filters.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\httpclient-4.1.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/httpclient-4.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\httpcore-4.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/httpcore-4.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\httpmime-4.1.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/httpmime-4.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\java-image-scaling-0.8.5-sources.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/java-image-scaling-0.8.5-sources.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\java-image-scaling-0.8.5.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/java-image-scaling-0.8.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/lib/java-image-scaling-0.8.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\jsoup-1.6.1-sources.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jsoup-1.6.1-sources.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\lib\jsoup-1.6.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jsoup-1.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/lib/jsoup-1.6.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\modules\ebean-1.0.6\lib\ebean-2.7.4.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/modules/ebean-1.0.6/lib/ebean-2.7.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\work\git\woimg\modules\ebean-1.0.6\lib\play-ebean-1.0.6.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/modules/ebean-1.0.6/lib/play-ebean-1.0.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\activation-1.1.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/activation-1.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\antlr-2.7.6.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/antlr-2.7.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\asm-all-3.3.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/asm-all-3.3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\async-http-client-1.6.5.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/async-http-client-1.6.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\bcprov-jdk15-1.45.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/bcprov-jdk15-1.45.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\c3p0-0.9.1.2.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/c3p0-0.9.1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\cglib-nodep-2.2.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/cglib-nodep-2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-beanutils-1.8.3.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-beanutils-1.8.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-codec-1.4.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-codec-1.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-collections-3.2.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-collections-3.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-email-1.2.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-email-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-fileupload-1.2.2.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-fileupload-1.2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-io-2.0.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-io-2.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-javaflow-1066591.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-javaflow-1066591.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-lang-2.6.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-lang-2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\commons-logging-1.1.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/commons-logging-1.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\dom4j-1.6.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/dom4j-1.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\ehcache-core-2.0.0.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/ehcache-core-2.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\ezmorph-1.0.3.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/ezmorph-1.0.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\geronimo-servlet_2.5_spec-1.2.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/geronimo-servlet_2.5_spec-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\groovy-all-1.7.10.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/groovy-all-1.7.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\gson-1.7.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/gson-1.7.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\h2-1.3.149.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/h2-1.3.149.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\hibernate-commons-annotations-3.2.0.Final.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/hibernate-commons-annotations-3.2.0.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="http://docs.jboss.org/hibernate/annotations/3.5/api/" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\hibernate-core-3.6.1.Final.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/hibernate-core-3.6.1.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="http://docs.jboss.org/hibernate/core/3.6/javadocs/" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\hibernate-entitymanager-3.6.0.Final.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/hibernate-entitymanager-3.6.0.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="http://docs.jboss.org/hibernate/entitymanager/3.6/javadocs/" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\hibernate-jpa-2.0-api-1.0.0.Final.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="http://download.oracle.com/javaee/6/api/" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\ivy-2.2.0.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/ivy-2.2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jamon-2.7.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jamon-2.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\javassist-3.9.0.GA.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/javassist-3.9.0.GA.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\javax.inject-1.0.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/javax.inject-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jaxen-1.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jaxen-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jj-imaging.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jj-imaging.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jj-simplecaptcha.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jj-simplecaptcha.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jj-textile.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jj-textile.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jj-wikitext.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jj-wikitext.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\joda-time-2.0.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/joda-time-2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jregex-1.2_01.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jregex-1.2_01.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jsr107cache-1.0.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jsr107cache-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\jta-1.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/jta-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\junit-4.8.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/junit-4.8.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\log4j-1.2.16.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/log4j-1.2.16.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="http://logging.apache.org/log4j/1.2/apidocs/" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\mail-1.4.3.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/mail-1.4.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\memcached-2.6.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/memcached-2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\mysql-connector-java-5.1.13.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/mysql-connector-java-5.1.13.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\netty-3.2.5.Final.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/netty-3.2.5.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\org.eclipse.jdt.core-3.8.0.v_C03.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/org.eclipse.jdt.core-3.8.0.v_C03.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\oval-1.50.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/oval-1.50.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\postgresql-9.0.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/postgresql-9.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\signpost-core-1.2.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/signpost-core-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\slf4j-api-1.6.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/slf4j-api-1.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\slf4j-log4j12-1.6.1.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/slf4j-log4j12-1.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\snakeyaml-1.7.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/snakeyaml-1.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="D:\dev\play-1.2.4\framework\lib\xstream-1.3.jar">
+        <CLASSES>
+          <root url="jar://D:/dev/play-1.2.4/framework/lib/xstream-1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+
