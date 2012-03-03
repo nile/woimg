@@ -455,7 +455,7 @@ ul.horizotal-menu>li, ul.horizotal-menu>li>ul>li{
 ul.horizotal-menu>li>ul{
 	display: none;
 	background-color: #ccc;
-	border-left: 1px solid #999;
+	border-left: 0px solid #999;
 	border-right: 0px solid #999;
 	border-top: 0px solid #999;
 }
@@ -467,5 +467,12 @@ ul.horizotal-menu>li>ul{
    font-size: 12px;
    line-height: 30px;
    margin: 4px;
-   padding: 5px;
+   padding: 5px 10px;
+}
+.paster-toolbar{
+    padding: 10px 5px;
+    position: absolute;
+    width: 160px;
+    display: none;
+    background: #EEEEEE;
 }

@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div class="clear"></div>
+<br/>
+<div id="container">
+</div>
+<script>
+    $(document).onReady(function() {
+    var wimg = new WoImg()
+    wimg.category_page('@{CCategory.page(category.code)}');
+    });
+</script>

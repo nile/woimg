@@ -19,6 +19,10 @@ public class CCategory extends Controller{
         List<Paster> pasters = category.lastest();
         render("Application/page.html",pasters);
     }
+    public static void view(String code){
+        final Category category = Category.getByCode(code);
+        render(category);
+    }
     public static void categories(){
         Query<Category> query = Category.all();
         List<Category> categories = query.findList();
