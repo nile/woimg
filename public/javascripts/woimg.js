@@ -79,8 +79,8 @@ var WoImg = new Class((function(opt) {
                                 var heights = [0,0,0,0,0];
                                 for( ;i<imgs.length; i++){
                                     var div = imgs[i];
-                                     _create_img_paster(div, heights)  ;
-                                    $("container").append(div);
+                                    var idx = _create_img_paster(div, heights)  ;
+                                    $("container").first('#c'+idx).append(div);
                                 }
                             }
                         });
