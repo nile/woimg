@@ -19,7 +19,6 @@
 </div>
 <script>
 	$(document).onReady(function() {
-		var wimg = new WoImg()
-		wimg.boardpage('${board.hash}');
+		woimg.boardpage('@{CBoard.page(board.hash)}');
 	});
 </script>

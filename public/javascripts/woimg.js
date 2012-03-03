@@ -1,4 +1,5 @@
-var WoImg = new Class((function() {
+var WoImg = new Class((function(opt) {
+    var options ;
     var _create_img_paster = function (div, heights){
           var j = 0;
         var minheight = 100000000000;
@@ -23,65 +24,82 @@ var WoImg = new Class((function() {
         heights[minheightIdx] = heights[minheightIdx]+ inc;
     };
     return {
-	popular: function(){
-		Xhr.load('/page', {
-				onSuccess: function(req){
-					var text = req.responseText;
-					var temp = new Element('div');
-					temp.html(text);
-					$('loading-hiddent-div').append(temp);
-					var imgs = temp.find('#loading-container')[0].children();
-					var i = 0;
-					var heights = [0,0,0,0,0];
-					for( ;i<imgs.length; i++){
-						var div = imgs[i];
-                        _create_img_paster(div, heights)  ;
-						$("container").append(div);
-					}
-					
-				}
-			});	
-	},
-	boardpage: function(board){
-		Xhr.load('/boardpage', {
-				params: {'hash': board},
-				onSuccess: function(req){
-					var text = req.responseText;
-					var temp = new Element('div');
-					temp.html(text);
-					$('loading-hiddent-div').append(temp);
-					var imgs = temp.find('#loading-container')[0].children();
-					var i = 0;
-					var heights = [0,0,0,0,0];
-					for( ;i<imgs.length; i++){
-						var div = imgs[i];
-						 _create_img_paster(div, heights)  ;
-                        $("container").append(div);
-					}
-				}
-			});	
-	},
-	category_page: function( url){
-         Xhr.load(url, {
-         				params: {},
-         				onSuccess: function(req){
-         					var text = req.responseText;
-         					var temp = new Element('div');
-         					temp.html(text);
-         					$('loading-hiddent-div').append(temp);
-         					var imgs = temp.find('#loading-container')[0].children();
-         					var i = 0;
-         					var heights = [0,0,0,0,0];
-         					for( ;i<imgs.length; i++){
-         						var div = imgs[i];
-         						 _create_img_paster(div, heights)  ;
-                                $("container").append(div);
-         					}
-         				}
-         			});
-	}
+        initialize: function(opt) {
+            this.options = opt;
+        },
+        popular: function(url){
+            Xhr.load(url, {
+                    onSuccess: function(req){
+                        var text = req.responseText;
+                        var temp = new Element('div');
+                        temp.html(text);
+                        $('loading-hiddent-div').append(temp);
+                        var imgs = temp.find('#loading-container')[0].children();
+                        var i = 0;
+                        var heights = [0,0,0,0,0];
+                        for( ;i<imgs.length; i++){
+                            var div = imgs[i];
+                            _create_img_paster(div, heights)  ;
+                            $("container").append(div);
+                        }
+
+                    }
+                });
+        },
+        boardpage: function(url){
+            Xhr.load(url, {
+                    params: {},
+                    onSuccess: function(req){
+                        var text = req.responseText;
+                        var temp = new Element('div');
+                        temp.html(text);
+                        $('loading-hiddent-div').append(temp);
+                        var imgs = temp.find('#loading-container')[0].children();
+                        var i = 0;
+                        var heights = [0,0,0,0,0];
+                        for( ;i<imgs.length; i++){
+                            var div = imgs[i];
+                             _create_img_paster(div, heights)  ;
+                            $("container").append(div);
+                        }
+                    }
+                });
+        },
+        category_page: function( url){
+             Xhr.load(url, {
+                            params: {},
+                            onSuccess: function(req){
+                                var text = req.responseText;
+                                var temp = new Element('div');
+                                temp.html(text);
+                                $('loading-hiddent-div').append(temp);
+                                var imgs = temp.find('#loading-container')[0].children();
+                                var i = 0;
+                                var heights = [0,0,0,0,0];
+                                for( ;i<imgs.length; i++){
+                                    var div = imgs[i];
+                                     _create_img_paster(div, heights)  ;
+                                    $("container").append(div);
+                                }
+                            }
+                        });
+        },
+
+        add_from_website:function (){
+            new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-from-website').clone());
+        },
+        add_from_upload: function(){
+            new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-from-upload').clone());
+        },
+        create_board:function(){
+            new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-create-board').clone());
+        },
+        repaste: function(hash){
+            new Lightbox({showButtons:false, showTitle: false}).load(this.options.repasteurl,{params:{'hash':hash}});
+        }
 	}
 })());
+
 
 var url_find_images = '/Application/findimages'
 function find_images(event){
@@ -149,7 +167,7 @@ function hide_toolbar(e){
         e.stop();
 }
 $(document).onReady(function(){
-	$$('ul.horizotal-menu').each(function(element, i){
+	$$('ul.horizontal-menu').each(function(element, i){
 		element.children('li')
 			.each('onClick',function(event){
 				$$('ul.submenu-current').each(function(e,i){

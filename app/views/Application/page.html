@@ -2,7 +2,7 @@
 #{list items: pasters, as: 'p'}
 <div class="img-frame frame-border" data-height="${p.img.height}" data-hash="${p.img.hash}"
      data-url="@{Application.view(p.hash)}" data-img-url="${p.img.smallLink()}" data-width="${p.img.width}">
-    <div class="paster-toolbar"><a class="button" href="javascript:void(0)">重贴</a> <a class="button" href="javascript:void(0)">评论</a></div>
+    <div class="paster-toolbar"><a class="button" href="javascript:void(0)" onclick="javascript:woimg.repaste('${p.hash}')">重贴</a> <a class="button" href="javascript:void(0)">评论</a></div>
 	#{a @Application.view(p.hash)}
     <img
 		id="${p.img.hash}" src="/public/images/place-holder.png" style="height:${Math.round((170.0/p.img.width)*p.img.height)}px"

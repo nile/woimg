@@ -444,15 +444,15 @@ input.delete:hover{
 	background: url(../images/topmenubg.png); 
 	width: 100%;
 }
-ul.horizotal-menu, ul.horizotal-menu>li>ul{
+ul.horizontal-menu, ul.horizontal-menu>li>ul{
 	display: inline;
 	padding:8px 1px;
 }
-ul.horizotal-menu>li, ul.horizotal-menu>li>ul>li{
+ul.horizontal-menu>li, ul.horizontal-menu>li>ul>li{
 	display: inline;
 	margin: 0px;
 }
-ul.horizotal-menu>li>ul{
+ul.horizontal-menu>li>ul{
 	display: none;
 	background-color: #ccc;
 	border-left: 0px solid #999;

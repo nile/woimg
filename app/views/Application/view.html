@@ -18,7 +18,7 @@
 		<hr/>
 		<div  style="padding:0 10px;">
 			<div class="grid_5">
-				<a class="button" href="javascript:void(0)" onclick="javascript:repaste('${paster.hash}')">重贴</a>
+				<a class="button" href="javascript:void(0)" onclick="javascript:woimg.repaste('${paster.hash}')">重贴</a>
 				#{haspermission user:current_user, target: paster, operation: 'edit'}
 					#{a @Application.edit(paster.hash), class:'button' }编辑#{/a}
 					#{a @Application.delete(paster.hash), class:'button' }删除#{/a}
