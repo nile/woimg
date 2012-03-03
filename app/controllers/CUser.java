@@ -22,10 +22,11 @@ public class CUser extends Controller{
 	}
 	public static void auth(User obj) {
 		User user = User.getByLogin(obj.login);
-		if(StringUtils.equals(user.password,Crypto.passwordHash(obj.password))) {
+		if(user != null && StringUtils.equals(user.password,Crypto.passwordHash(obj.password))) {
 			session.put(KEY_SESSION_USER_LOGON,user.login);
 			Application.index();
 		}
+        flash.error("用户名或密码错误");
 		login();
 	}
 	public static void register(User obj) {
