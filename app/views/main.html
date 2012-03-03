@@ -85,18 +85,8 @@
 
     
     <!-- 隐藏的对话框的代码 -->
-	<div id="dlg-hidden-div" style="visibility:hidden;">
-		<div id="dlg-tool-add" class="frame-border">
-			<p><a href="javascript:void(0)" onclick="javascript:add_from_website()">从网站收藏</a></p>
-			<p>
-			<a href="javascript:void(0)" onclick="javascript:add_from_upload()">从文件上传</a>
-			</p>
-			<p>
-			<a href="javascript:void(0)" onclick="javascript:create_board()">新建面板</a>
-			</p>
-			<div class="clear"></div>
-		</div>
-		<div id="dlg-add-from-upload" class=""  style="margin:5px;">
+	<div id="dlg-hidden-div" style="display:none;">
+		<div id="dlg-add-from-upload">
 			上传本地图片
 			#{form @Application.paste(), id:'file-load-form', enctype:'multipart/form-data'}
 				<fieldset>
@@ -119,29 +109,31 @@
 			#{/form}
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-from-website" class=""  style="margin:5px;">
+		<div id="dlg-add-from-website">
 			#{form @Application.paste(), id:'url-load-form'}
 				<fieldset>
 				<legend>收藏网络图片</legend>
 				<input type="hidden" name="type" value="url">
 				<input type="hidden" name="imgurl" value="url">
-				<p><label>请选择一个图片</label><br/>
-				<input class="title" type="text" name="url" style="width:220px;">
+				<p><label>在这输入网址</label><br/>
+				<input class="title" type="text" name="url" style="width:320px;">
 				<a href="javascript:void(0)" onclick="javascript:find_images(event)">找图片</a>
 				</p>
-				
-				<p><label>请选择一个面板</label><br/>
+				<p>
 				<div>
-				<div style="display:inline;width:100px;height:100px;">
-					<img style="max-width:100px;max-height:100px;" src="/public/images/place-holder.png" id="preview_img"><br/>
+				<div style="float:left;display:inline;width:100px;height:124px;">
+					<img style="max-width:100px;height:100px;" src="/public/images/place-holder.png" id="preview_img"><br/>
 					<a href="javascript:void(0)" onclick="javascript:prev_image(event)">上一个</a>
 					<a href="javascript:void(0)" onclick="javascript:next_image(event)">下一个</a>
 				</div>
-				<select class="title" name="board" >
-					#{list boards, as:'b'}
-					<option value="${b.hash}">${b.name}</option>
-					#{/list}
-				</select>
+                <div style="float:left;"><label>请选择一个面板</label><br/>
+                    <select class="title" name="board" >
+                        #{list boards, as:'b'}
+                        <option value="${b.hash}">${b.name}</option>
+                        #{/list}
+                    </select>
+                </div>
+                    <div class="clear"></div>
 				</div>
 				</p>
 				<p><label>描述</label><br/>
@@ -152,7 +144,7 @@
 			#{/form}
 			<div class="clear"></div>
 		</div>
-		<div id="dlg-add-create-board" class=""  style="margin:5px;">
+		<div id="dlg-add-create-board">
 			#{form @CBoard.create(), id:'url-load-form'}
 				<fieldset>
 				<legend>新建面板</legend>
@@ -172,7 +164,12 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-        var woimg = new WoImg({repasteurl:'@{Application.prerepaste()}'});
+        var woimg = new WoImg({
+                repaste_url:'@{Application.prerepaste()}',
+                comment_url:'@{Application.comment()}',
+                quick_comments_url: '@{Application.quickComments()}',
+                comments_url: '@{Application.comments()}'
+        });
 	</script>
     </body>
 </html>

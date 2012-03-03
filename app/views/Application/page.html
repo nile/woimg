@@ -8,8 +8,16 @@
 		id="${p.img.hash}" src="/public/images/place-holder.png" style="height:${Math.round((170.0/p.img.width)*p.img.height)}px"
 	/>#{/a}
 	<div class="clear"></div>
-	<div>${p.info}</div>
-	<div class="memo">#{a @Application.home(p.user.login)} ${p.user.login}#{/a} ${p.pasteDate.freindly()} 粘贴在 #{a @CBoard.view(p.board.hash)}${p.board.name}#{/a}</div>
+    <div>${p.info}</div>
+    <div class="memo">#{a @Application.home(p.user.login)} ${p.user.login}#{/a} ${p.pasteDate.freindly()} 粘贴在 #{a @CBoard.view(p.board.hash)}${p.board.name}#{/a}</div>
+    <div id="comments">
+        #{list p.comments(), as: 'c'}
+            ${c.comment}<br/>
+        #{/list}
+    </div>
+    #{if current_user}
+    <div><input id="quick-comment-${p.hash}" name="comment" style="width:164px;" onkeypress="woimg.quick_comment(event,'${p.hash}')"></div>
+    #{/if}
 </div>	
 #{/list}
 </div>

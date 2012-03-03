@@ -376,6 +376,11 @@ body {
 	position: relative;
 	margin-left: 10px;
 }
+#container > .column{
+    width: 190px;
+    float: left;
+}
+
 .frame-border{
 	border: 1px solid #DDDDDD;
 	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
@@ -384,7 +389,8 @@ body {
 
 .img-frame{
 	width: 170px;
-	position: absolute;
+	/*position: absolute;*/
+	margin: 8px 0px;
 }
 .tools{
 	float:right;
@@ -466,13 +472,24 @@ ul.horizontal-menu>li>ul{
 .category-button {
    font-size: 12px;
    line-height: 30px;
-   margin: 4px;
+   margin: 2px;
    padding: 5px 10px;
 }
 .paster-toolbar{
-    padding: 10px 5px;
+    padding: 6px 5px;
     position: absolute;
     width: 160px;
     display: none;
     background: #EEEEEE;
+}
+fieldset{
+    padding: 5px;
+    margin: 2px;
+    color: #333;
+}
+fieldset>p{
+    margin-bottom: 5px;
+}
+fieldset> .title{
+    margin:3px;
 }

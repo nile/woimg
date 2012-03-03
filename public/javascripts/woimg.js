@@ -12,16 +12,17 @@ var WoImg = new Class((function(opt) {
         }
         var inc = div.dimensions().height + 10;
 
-        div.setStyle('left',( (minheightIdx)*190 ) + 'px');
-        div.setStyle('top', ( minheight ) +'px');
+        //div.setStyle('left',( (minheightIdx)*190 ) + 'px');
+        //div.setStyle('top', ( minheight ) +'px');
         var datahash= div.get('data-hash');
-        var img = div.find('#'+datahash)[0];
+        var img = div.first('#'+datahash);
         img.set('src',div.get('data-img-url'));
         div.on({
                  mouseenter: show_toolbar,
                  mouseleave: hide_toolbar
                  });
         heights[minheightIdx] = heights[minheightIdx]+ inc;
+        return minheightIdx;
     };
     return {
         initialize: function(opt) {
@@ -39,8 +40,8 @@ var WoImg = new Class((function(opt) {
                         var heights = [0,0,0,0,0];
                         for( ;i<imgs.length; i++){
                             var div = imgs[i];
-                            _create_img_paster(div, heights)  ;
-                            $("container").append(div);
+                            var idx = _create_img_paster(div, heights)  ;
+                            $("container").first('#c'+idx).append(div);
                         }
 
                     }
@@ -59,8 +60,8 @@ var WoImg = new Class((function(opt) {
                         var heights = [0,0,0,0,0];
                         for( ;i<imgs.length; i++){
                             var div = imgs[i];
-                             _create_img_paster(div, heights)  ;
-                            $("container").append(div);
+                             var idx = _create_img_paster(div, heights)  ;
+                             $("container").first('#c'+idx).append(div);
                         }
                     }
                 });
@@ -95,7 +96,22 @@ var WoImg = new Class((function(opt) {
             new Lightbox({showButtons:false, showTitle: false}).show($('dlg-add-create-board').clone());
         },
         repaste: function(hash){
-            new Lightbox({showButtons:false, showTitle: false}).load(this.options.repasteurl,{params:{'hash':hash}});
+            new Lightbox({showButtons:false, showTitle: false}).load(this.options.repaste_url,{params:{'hash':hash}});
+        },
+        quick_comment: function (e, id){
+            if(e.keyCode == 13){
+                var val = $(e.target).getValue();
+                if(val.length > 0){
+                     var comments_url = this.options.quick_comments_url;
+                     var xhr = new Xhr(this.options.comment_url,{
+                           method: 'post',
+                           onSuccess: function (){
+                               $(e.target).parent('.img-frame').first('#comments').load(comments_url,{params:{'hash':id}})
+                           }
+                     });
+                     xhr.send({"hash": id, "comment": val});
+                }
+            }
         }
 	}
 })());

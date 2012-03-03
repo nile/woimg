@@ -1,32 +1,24 @@
 package controllers;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import com.avaje.ebean.Query;
 import models.*;
 import notifiers.Mails;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import play.modules.ebean.EbeanSupport;
 import play.mvc.Controller;
 import play.mvc.With;
 import utils.HttpUtil;
 import utils.ImgUtil;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
 @With(LoginFilter.class)
 public class Application extends Controller {
 	
@@ -67,6 +59,11 @@ public class Application extends Controller {
 		Paster paster = Paster.getByHash(hash);
 		List<Comment> comments = paster.comments();
 		render(comments);
+	}
+    public static void quickComments(String hash) {
+		Paster paster = Paster.getByHash(hash);
+		List<Comment> comments = paster.comments();
+		render("Application/quick-comments.html",comments);
 	}
 	public static void comment(String hash, String comment) {
 		Paster paster = Paster.getByHash(hash);
