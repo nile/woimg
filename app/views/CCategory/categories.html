@@ -1,0 +1,8 @@
+#{extends "plain.html"/}
+分类<br/>
+        <div>
+#{list categories, as: 'cat'}
+        <a class="category-button" href="javascript:void(0)" onclick="javascript:load_categories(event,'@{CCategory.page(cat.code)}')" >${cat.name}</a>
+#{/list}
+        </div>
+        <br/>

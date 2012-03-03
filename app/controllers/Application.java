@@ -11,11 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import models.Board;
-import models.Comment;
-import models.Img;
-import models.Paster;
-import models.User;
+import com.avaje.ebean.Query;
+import models.*;
 import notifiers.Mails;
 
 import org.apache.commons.io.FileUtils;
@@ -25,6 +22,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import play.modules.ebean.EbeanSupport;
 import play.mvc.Controller;
 import play.mvc.With;
 import utils.HttpUtil;

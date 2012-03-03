@@ -28,8 +28,9 @@
 			    <div style="padding-top:10px;" >
 			    <span>把 <a class="button" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://www.jsxnc.com/public/javascripts/pastemarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());">贴</a> 拖放到工具栏
 			    </span>
+                <a class="menu-button" href="javascript:void(0);" onclick="javascript:show_categories(event,'@{CCategory.categories()}');">分类</a>
 			    <ul class="horizotal-menu">
-			    <li><span ><a title="go" class="menu-button" href="javascript:void(0);" onclick="javascript:tool_add();">+添加</a></span>
+			    <li><span ><a class="menu-button" href="javascript:void(0);" onclick="javascript:tool_add();">+添加</a></span>
 			    	<ul >
 			    	<li><a class="menu-button" href="javascript:void(0)" onclick="add_from_website()">从网站添加</a></li>
 			    	<li><a class="menu-button" href="javascript:void(0)" onclick="javascript:add_from_upload()">从文件上传</a></li>
@@ -53,19 +54,32 @@
 			    	<li><a class="menu-button" href="@{CUser.login()}">登录</a></li>
 			    	<li><a class="menu-button" href="@{CUser.joinin()}">注册</a></li>
 			    	</ul>
-			    	</li>
+			    </li>
 			    #{/else}
+                <li>
+                    <span><a class="menu-button" href="javascript:void(0)">帮助</a></span>
+                    <ul >
+                        <li><a class="menu-button" href="#">帮助</a></li>
+                        <li><a class="menu-button" href="#">关于</a></li>
+                    </ul>
+                </li>
 			    </ul>
 			    </div>
 		    </div>
 		    <div class="clear"></div>
+
 	  	</div>
 	    <div class="clear"></div>
     </div>
     </div>
+    <div class="clear"></div>
+    <div style="height:55px;">
+    </div>
+    <div class="container_12" id="info-div">
+        <div id="categories"></div>
+        <div class="clear"></div>
+    </div>
     <div class="container_12">
-    	<div style="height:55px;">
-    	</div>
 	    #{doLayout /}
     </div>
     <script>
@@ -107,7 +121,7 @@
 					<input class="title" type="file" name="file" style="width:226px;">
 				</p>
 				<p><label>请选择一个面板</label><br/>
-				<select class="title" name="board" id="board" >
+				<select class="title" name="board" >
 					#{list boards, as:'b'}
 					<option value="${b.hash}">${b.name}</option>
 					#{/list}
@@ -139,7 +153,7 @@
 					<a href="javascript:void(0)" onclick="javascript:prev_image(event)">上一个</a>
 					<a href="javascript:void(0)" onclick="javascript:next_image(event)">下一个</a>
 				</div>
-				<select class="title" name="board" id="board" >
+				<select class="title" name="board" >
 					#{list boards, as:'b'}
 					<option value="${b.hash}">${b.name}</option>
 					#{/list}
