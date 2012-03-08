@@ -1,18 +1,13 @@
 package models;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.Entity;
-
-import org.apache.commons.lang.StringUtils;
-
 import com.avaje.ebean.Query;
-
-import controllers.LoginFilter;
-
+import org.apache.commons.lang.StringUtils;
 import play.modules.ebean.Model;
 import utils.HashUtil;
+
+import javax.persistence.Entity;
+import java.util.Date;
+import java.util.List;
 @Entity
 public class User  extends Model{
 	public String login;
@@ -30,6 +25,7 @@ public class User  extends Model{
 	}
 	public List<Paster> latestPasters(){
 		Query<Paster> query = Paster.find("user.id = ?", id);
+        query.order("pasteDate desc");
 		query.setMaxRows(9);
 		return query.findList();
 	}
