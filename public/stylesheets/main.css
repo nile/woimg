@@ -468,6 +468,7 @@ ul.horizontal-menu>li>ul{
 
 #info-div{
     display: none;
+    background:#eee;
 }
 .category-button {
    font-size: 12px;

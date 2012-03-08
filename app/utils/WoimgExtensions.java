@@ -1,15 +1,16 @@
 package utils;
 
+import org.apache.commons.lang.time.DateUtils;
+import play.Logger;
+import play.templates.JavaExtensions;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.apache.commons.lang.time.DateUtils;
-
-import play.templates.JavaExtensions;
-
-public class DateExtensions extends JavaExtensions {
+public class WoimgExtensions extends JavaExtensions {
 	public static String freindly(Date date) {
 		return FriendlyTime.friendlyTime(date);
 	}
@@ -22,4 +23,15 @@ public class DateExtensions extends JavaExtensions {
 		DecimalFormat df = new DecimalFormat(fmt);
 		return df.format(l);
 	}
+    public static String domain(String url){
+        if(url!=null){
+            try {
+                return new URL(url).getHost();
+            } catch (MalformedURLException e) {
+                Logger.warn("转换url时候出错",e);
+                return "";
+            }
+        }
+        return "";
+    }
 }

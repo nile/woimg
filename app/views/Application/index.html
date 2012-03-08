@@ -1,5 +1,7 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set 'title'}
+        ${current_user?.login}
+#{/set}
 <div id="container">
     <div class="column" id="c0"></div>
     <div class="column" id="c1"></div>

@@ -16,6 +16,7 @@ public class Category extends Model{
 
     public List<Paster> lastest() {
         final Query<Paster> query = Paster.find("board.category.code = ?", code);
+        query.order("pasteDate desc");
         query.setMaxRows(30);
         final List<Paster> pasters = query.findList();
         return pasters;

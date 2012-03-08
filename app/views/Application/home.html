@@ -1,5 +1,7 @@
 #{extends 'main.html' /}
-#{set title:'WOIMG' /}
+#{set 'title'}
+    ${current_user?.login}
+#{/set}
 <div class="grid_3">
 	<div class="frame-border">
 	  <h3>#{a @Application.home(current_user.login)}${current_user.login}#{/a}</h3>

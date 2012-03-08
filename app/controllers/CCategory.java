@@ -4,6 +4,7 @@ import com.avaje.ebean.Query;
 import models.Category;
 import models.Paster;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Date: 12-3-3
  * Time: 下午2:50
  */
+@With({LoginFilter.class})
 public class CCategory extends Controller{
     public static void page(String code){
         Category category = Category.getByCode(code);

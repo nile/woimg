@@ -8,4 +8,6 @@ public/upload
 eclipse/
 precompiled/
 modules/
-/nbproject/private/
+/nbproject/private/.idea
+.idea/
+nbproject/

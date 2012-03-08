@@ -1,5 +1,7 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set 'title'}
+    ${current_user?.login}
+#{/set}
 
 <div class="clear"></div>
 <br/>
@@ -12,7 +14,7 @@
 </div>
 <script>
     $(document).onReady(function() {
-    var wimg = new WoImg()
-    wimg.category_page('@{CCategory.page(category.code)}');
+
+    woimg.category_page('@{CCategory.page(category.code)}');
     });
 </script>

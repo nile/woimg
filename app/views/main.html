@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>#{get 'title' /}-云贴 分享你的图片</title>
+        <title>#{get 'title' /} 云贴 分享你的图片</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/css/reset.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/css/text.css'}">
@@ -22,64 +22,65 @@
 	    <img src="/public/images/place-holder.png" id="img-holder">
     </div>
     <div class="topmenu">
-    <div class="container_12">
-    	<div style="">
-		    <h1 class="grid_3" style="margin-bottom:0px;">#{a @Application.index()}<img src="@{'/public/images/logo.png'}">#{/a}</h1>
-		    <div class="grid_9 right" style="line-height:38px;">
-			    <div style="padding-top:10px;" >
-			    <span>把 <a class="button" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://www.cloudpaster.com/public/javascripts/pastemarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());">贴</a> 拖放到工具栏
-			    </span>
-                <a class="menu-button" href="javascript:void(0);" onclick="javascript:show_categories(event,'@{CCategory.categories()}');">分类</a>
-			    <ul class="horizontal-menu">
-			    <li><span ><a class="menu-button" href="javascript:void(0);">+添加</a></span>
-			    	<ul >
-			    	<li><a class="menu-button" href="javascript:void(0)" onclick="woimg.add_from_website()">从网站添加</a></li>
-			    	<li><a class="menu-button" href="javascript:void(0)" onclick="javascript:woimg.add_from_upload()">从文件上传</a></li>
-			    	<li><a class="menu-button" href="javascript:void(0)" onclick="javascript:woimg.create_board()">新建面板</a></li>
-			    	</ul>
-			    </li>
-			    		    
-			    #{if current_user != null}
-			    <li><span><a class="menu-button" href="javascript:void(0)">${current_user.login}</a></span>
-			    	<ul>
-					    <li><a class="menu-button" href="@{Application.home(current_user.login)}">我的图片</a></li>
-					    <li><a class="menu-button" href="@{Application.home(current_user.login)}">设置</a></li>
-					    <li><a class="menu-button" href="@{CUser.logout()}">退出</a></li>
-			    	</ul>
-			    </li>
-			    #{/if}
-			    #{else}
-			    <li>
-			    	<span><a class="menu-button" href="javascript:void(0)">加入</a></span>
-			    	<ul >
-			    	<li><a class="menu-button" href="@{CUser.login()}">登录</a></li>
-			    	<li><a class="menu-button" href="@{CUser.joinin()}">注册</a></li>
-			    	</ul>
-			    </li>
-			    #{/else}
-                <li>
-                    <span><a class="menu-button" href="javascript:void(0)">帮助</a></span>
-                    <ul >
-                        <li><a class="menu-button" href="#">帮助</a></li>
-                        <li><a class="menu-button" href="#">关于</a></li>
-                    </ul>
-                </li>
-			    </ul>
-			    </div>
-		    </div>
-		    <div class="clear"></div>
+        <div class="container_12">
+            <div style="">
+                <h1 class="grid_3" style="margin-bottom:0px;">#{a @Application.index()}<img src="@{'/public/images/logo.png'}">#{/a}</h1>
+                <div class="grid_9 right" style="line-height:38px;">
+                    <div style="padding-top:10px;" >
+                    <span>把 <a class="button" href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://www.cloudpaster.com/public/javascripts/pastemarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());">贴</a> 拖放到工具栏
+                    </span>
+                    <a class="menu-button" href="javascript:void(0);" onclick="javascript:show_categories(event,'@{CCategory.categories()}');">分类</a>
+                    <ul class="horizontal-menu">
+                    <li><span ><a class="menu-button" href="javascript:void(0);">+添加</a></span>
+                        <ul >
+                        <li><a class="menu-button" href="javascript:void(0)" onclick="woimg.add_from_website()">从网站添加</a></li>
+                        <li><a class="menu-button" href="javascript:void(0)" onclick="javascript:woimg.add_from_upload()">从文件上传</a></li>
+                        <li><a class="menu-button" href="javascript:void(0)" onclick="javascript:woimg.create_board()">新建面板</a></li>
+                        </ul>
+                    </li>
 
-	  	</div>
-	    <div class="clear"></div>
-    </div>
+                    #{if current_user != null}
+                    <li><span><a class="menu-button" href="javascript:void(0)">${current_user.login}</a></span>
+                        <ul>
+                            <li><a class="menu-button" href="@{Application.home(current_user.login)}">我的图片</a></li>
+                            <li><a class="menu-button" href="@{Application.home(current_user.login)}">设置</a></li>
+                            <li><a class="menu-button" href="@{CUser.logout()}">退出</a></li>
+                        </ul>
+                    </li>
+                    #{/if}
+                    #{else}
+                    <li>
+                        <span><a class="menu-button" href="javascript:void(0)">加入</a></span>
+                        <ul >
+                        <li><a class="menu-button" href="@{CUser.login()}">登录</a></li>
+                        <li><a class="menu-button" href="@{CUser.joinin()}">注册</a></li>
+                        </ul>
+                    </li>
+                    #{/else}
+                    <li>
+                        <span><a class="menu-button" href="javascript:void(0)">帮助</a></span>
+                        <ul >
+                            <li><a class="menu-button" href="#">帮助</a></li>
+                            <li><a class="menu-button" href="#">关于</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="container_12" id="info-div">
+            <div id="categories"></div>
+            <div class="clear"></div>
+        </div>
     </div>
     <div class="clear"></div>
     <div style="height:55px;">
     </div>
-    <div class="container_12" id="info-div">
-        <div id="categories"></div>
-        <div class="clear"></div>
-    </div>
+
     <div class="container_12">
 	    #{doLayout /}
     </div>
@@ -165,6 +166,24 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+        //$(document).onReady(function(){
+            $$('ul.horizontal-menu').each(function(element, i){
+            element.children('li')
+            .each('onClick',function(event){
+            $$('ul.submenu-current').each(function(e,i){
+            e.setStyle('display','none');;
+            e.toggleClass('submenu-current');
+            });
+            element = event.target.parent('li');
+            if(element.first('ul')){
+            submenu = element.first('ul');
+            submenu.toggleClass('submenu-current');
+            submenu.setStyle('display','inline');
+            submenu.highlight();
+            }
+            });
+            });
+        //});
         var woimg = new WoImg({
                 repaste_url:'@{Application.prerepaste()}',
                 comment_url:'@{Application.comment()}',

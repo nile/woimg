@@ -1,15 +1,12 @@
 package models;
 
-import java.util.Date;
-import java.util.List;
+import com.avaje.ebean.Query;
+import play.modules.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-
-import com.avaje.ebean.Query;
-
-import play.modules.ebean.EbeanSupport;
-import play.modules.ebean.Model;
+import java.util.Date;
+import java.util.List;
 @Entity
 public class Board extends Model{
 	public String name;
@@ -25,6 +22,7 @@ public class Board extends Model{
 	}
     public List<Paster> latest(){
 		Query<Paster> query = Paster.find("board.id = ?", id);
+        query.order("pasteDate desc");
 		query.setMaxRows(9);
 		return query.findList();
     }
