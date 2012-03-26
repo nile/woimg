@@ -32,6 +32,8 @@ public class Application extends Controller {
 	}
 	public static void view(String hash) {
 		Paster paster = Paster.getByHash(hash);
+		if(paster == null)
+			return;
 		List<Paster> pastersInBorad = paster.board.latest();
 		render(paster, pastersInBorad);
 	}
